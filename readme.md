@@ -1,8 +1,8 @@
 # React For Everyone
 
 - [React For Everyone](#react-for-everyone)
-  - [1. What is React](#1-what-is-react)
-  - [2. Why React](#2-why-react)
+  - [1. What is React ?](#1-what-is-react)
+  - [2. Why React ?](#2-why-react)
   - [3. JSX](#3-jsx)
   - [JSX Element](#jsx-element)
   - [Rendering JSX Element](#rendering-jsx-element)
@@ -32,11 +32,22 @@
   - [React Router](#react-router)
   - [React Hooks](#react-hooks)
 
-## 1. What is React
+## 1. What is React ?
 
 React is a JavaScript library for building user interfaces. It was initially released on May 29, 2013. The current version is 16.12.0 and somehow it is stable. React was created by Facebook. It is a tool for building UI components.
 
-## 2. Why React
+## 2. Why React ?
+
+React is one of the most popular JavaScript library. Many developers and companies have been using it for the last couple of years. Its popularity has been growing fast.
+
+Why we choose to use react ? We use react because of the following reasons:
+
+- fast
+- modular
+- scalable
+- flexible
+- big community and popular
+- open source
 
 
 ## 3. JSX
