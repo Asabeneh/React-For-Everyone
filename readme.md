@@ -49,8 +49,15 @@ Why we choose to use react ? We use react because of the following reasons:
 - big community and popular
 - open source
 
-
 ## 3. JSX
+
+JSX stands for JavaScript XML. JSX allows us to write HTML elements with JavaScript code together in React. To create HTML elements in React we do not use the _createElement()_ instead we just use JSX elements. JSX will be converted to JavaScript on browser using transpiler(Babel).See the JSX code below.
+
+```js
+const jsxElement = <h1>I am a JSX element</h1>
+```
+
+The above strange looking code seems a JavaScrip but not and it seems an HTML but not completely an HTML element. It is a mix of JavaScript and and HTML element. JSX can allow us to use HTML in JavaScript
 
 ## JSX Element
 
