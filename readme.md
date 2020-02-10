@@ -5,9 +5,13 @@
 - [React For Everyone](#react-for-everyone)
   - [Introduction](#introduction)
   - [1. What is React ?](#1-what-is-react)
+    - [Exercises](#exercises)
   - [2. Why React ?](#2-why-react)
+    - [Exercises](#exercises-1)
   - [3. JSX](#3-jsx)
+    - [Exercises](#exercises-2)
   - [JSX Element](#jsx-element)
+    - [Exercises](#exercises-3)
   - [Rendering JSX Element](#rendering-jsx-element)
   - [Style and className](#style-and-classname)
   - [Injecting data to JSX Element](#injecting-data-to-jsx-element)
@@ -59,6 +63,10 @@ To summarize:
 - React allows us to create reusable UI components
 - React latest release is 16.12.0
 
+### Exercises
+
+1. What is React?
+
 ## 2. Why React ?
 
 React is one of the most popular JavaScript library. Many developers and companies have been using it for the last couple of years. Its popularity has been growing fast and it has a huge community.
@@ -72,6 +80,10 @@ Why we choose to use react ? We use react because of the following reasons:
 - big community and popular
 - open source
 
+### Exercises
+
+1. Why chose to use react? 
+
 ## 3. JSX
 
 JSX stands for JavaScript XML. JSX allows us to write HTML elements with JavaScript code together in React. To create HTML elements in React we do not use the _createElement()_ instead we just use JSX elements.Therefore, JSX makes it easier to write and add HTML in React. JSX will be converted to JavaScript on browser using transpiler(Babel). See the JSX code below.
@@ -81,6 +93,10 @@ const jsxElement = <h1>I am a JSX element</h1>
 ```
 
 The above strange looking code seems a JavaScrip but not and it seems an HTML but not completely an HTML element. It is a mix of JavaScript and and HTML element. JSX can allow us to use HTML in JavaScript
+
+### Exercises
+
+1. What is JSX?
 
 ## JSX Element
 
@@ -123,6 +139,11 @@ const header = (
 ```
 
 As you can see the header element is a parent element for all the inner HTML elements and JSX has to be wrapped by an outer parent element. Without the header HTML element or other parent HTML element the above JSX is invalid.
+
+### Exercises
+
+1. What is JSX 
+2. Write some JSX?
 
 ## Rendering JSX Element
 
