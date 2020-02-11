@@ -428,7 +428,7 @@ The id used in the input element is not for styling purpose instead to refer the
 
 If class is used instead of className you will see such kind of warning.
 
-![Class Name warning](../ReactForEveryone/images/className_warning.png)
+![Class Name warning](./images/className_warning.png)
 
 Now, you know how to use the inline style and how to use className and let us style all the JSX elements.
 
@@ -546,167 +546,167 @@ Instead of style object using regular styling method is more easier than the abo
 ```html
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
-        href="https://fonts.googleapis.com/css?family=Aldrich|Lato:300,400,700|Montserrat:300,400,500|Nunito:300,400,600|Oswald|Raleway+Dots|Raleway:300,400|Roboto:300,400,500&display=swap"
-        rel="stylesheet">
-
+      href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500|Roboto:300,400,500&display=swap"
+      rel="stylesheet"
+    />
 
     <title>React For Everyone</title>
     <style>
-        /* == General style === */
-        * {
-            box-sizing: border-box;
-            padding: 0;
-            margin: 0
-        }
+      /* == General style === */
+      * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+      }
 
+      html,
+      body {
+        height: 100%;
+        line-height: 1.5;
+        font-family: 'Montserrat';
+        font-weight: 300;
+        color: black;
+      }
 
-        html,
-        body {
-            height: 100%;
-            line-height: 1.5;
-            font-family: 'Montserrat';
-            font-weight: 300;
-            color: black;
+      .root {
+        min-height: 100%;
+        position: relative;
+      }
 
-        }
+      .header-wrapper,
+      .main-wrapper,
+      .footer-wrapper {
+        width: 85%;
+        margin: auto;
+      }
 
-        .root {
-            min-height: 100%;
-            position: relative;
-        }
+      .header-wrapper,
+      .main-wrapper {
+        padding: 10px;
+        margin: 2px auto;
+      }
 
-        .header-wrapper,
-        .main-wrapper,
-        .footer-wrapper {
-            width: 85%;
-            margin: auto;
+      h1 {
+        font-size: 70px;
+        font-weight: 300;
+      }
 
-        }
+      h2,
+      h3 {
+        font-weight: 300;
+      }
 
-        .header-wrapper,
-        .main-wrapper {
-            padding: 10px;
-            margin: 2px auto;
-        }
+      header {
+        background-color: #61dbfb;
+        padding: 25;
+        padding: 10px;
+      }
 
-        h1 {
-            font-size: 70px;
-            font-weight: 300;
-        }
+      main {
+        padding: 10px;
+        padding-bottom: 60px;
+        /* Height of the footer */
+      }
 
-        h2,
-        h3 {
-            font-weight: 300;
-        }
+      ul {
+        margin-left: 15px;
+      }
 
-        header {
-            background-color: #61DBFB;
-            padding: 25;
-            padding: 10px;
-        }
+      ul li {
+        list-style: none;
+      }
 
-        main {
-            padding: 10px;
-            padding-bottom: 60px;
-            /* Height of the footer */
+      footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 60px;
+        /* Height of the footer */
+        background: #6cf;
+      }
 
-        }
-
-        ul {
-            margin-left: 15px;
-        }
-
-
-
-        ul li {
-            list-style: none;
-        }
-
-        footer {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            height: 60px;
-            /* Height of the footer */
-            background: #6cf;
-
-        }
-
-        .footer-wrapper {
-            font-weight: 400;
-            text-align: center;
-            line-height: 60px;
-        }
+      .footer-wrapper {
+        font-weight: 400;
+        text-align: center;
+        line-height: 60px;
+      }
     </style>
-</head>
+  </head>
 
-<body>
-    <div class="root"> </div>
+  <body>
+    <div class="root"></div>
 
-    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+    ></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type="text/babel">
-        // To get the root element from the HTML document
-        const rootElement = document.querySelector('.root')
+      // To get the root element from the HTML document
+      const rootElement = document.querySelector('.root')
 
-    
+      // JSX element, header
+      const header = (
+        <header>
+          <div className='header-wrapper'>
+            <h1>Getting Started React</h1>
+            <h2>JavaScript Library</h2>
+            <h3>Instructor: Asabeneh Yetayeh</h3>
+            <p>Date: Feb 10, 2020</p>
+          </div>
+        </header>
+      )
 
+      // JSX element, main
+      const main = (
+        <main>
+          <div className='main-wrapper'>
+            <p>
+              Prerequisite to get started{' '}
+              <strong>
+                <em>react.js</em>
+              </strong>
+              :
+            </p>
+            <ul>
+              <li>HTML</li>
+              <li>CSS</li>
+              <li> JavaScript</li>
+            </ul>
+          </div>
+        </main>
+      )
 
-    // JSX element, header
-    const header = (
-    <header>
-  
-        <div className = "header-wrapper">
-             <h1>Getting Started React</h1>
-             <h2>JavaScript Library</h2>
-             <h3>Instructor: Asabeneh Yetayeh</h3>
-             <p>Date: Feb 10, 2020</p>
+      // JSX element, footer
+      const footer = (
+        <footer>
+          <div className='footer-wrapper'>
+            <p>Copyright 2020</p>
+          </div>
+        </footer>
+      )
+
+      // JSX element, app
+      const app = (
+        <div className='app'>
+          {header}
+          {main}
+          {footer}
         </div>
-    </header>
-    )
+      )
 
-    // JSX element, main
-    const main = (
-    <main>
-        <div className="main-wrapper">
-             <p>Prerequisite to get started <strong><em>react.js</em></strong>:</p>
-             <ul>
-                 <li>HTML</li>
-                 <li>CSS</li>
-                 <li> JavaScript</li>
-             </ul>
-        </div>
-    </main>
-    )
-
-     // JSX element, footer
-    const footer = (
-    <footer>
-        <div className="footer-wrapper">
-             <p>Copyright 2020</p>
-        </div>
-    </footer>
-    )
-
-     // JSX element, app
-    const app = (
-    <div className="app">
-        {header}
-        {main}
-        {footer}
-    </div>
-    )
-
-    // we render the JSX element using the ReactDOM package
-    ReactDOM.render(app, rootElement)
+      // we render the JSX element using the ReactDOM package
+      ReactDOM.render(app, rootElement)
     </script>
-</body>
+  </body>
 </html>
 ```
 
@@ -714,13 +714,292 @@ Instead of style object using regular styling method is more easier than the abo
 
 ## Injecting data to JSX Element
 
+So far, we used static data on the JSX elements but we also pass different data types as a dynamic data. The dynamic data could be string, number, boolean, array or object. Let us see each of the data types step by step. To inject data to a JSX we use the {} bracket.
+
+```js
+const title = 'Getting Started React'
+const subtitle = 'JavaScript Library'
+const authorFirstName = 'Asabeneh'
+const authorLastName = 'Yetayeh'
+const date = 'Feb 10, 2020'
+
+// JSX element, header
+const header = (
+  <header>
+    <div className='header-wrapper'>
+      <h1>{title}</h1>
+      <h2>{subtitle}</h2>
+      <h3>
+        Instructor: {authorFirstName} {authorLastName}
+      </h3>
+      <p>Date: {date}</p>
+    </div>
+  </header>
+)
+```
+
+Similar to the header JSX element we can implement to main and footer JSX element.
+
 ### Injecting a string to JSX Element
+
+In this section we only inject only strings
+
+```js
+const title = 'Getting Started React'
+const subtitle = 'JavaScript Library'
+const authorFirstName = 'Asabeneh'
+const authorLastName = 'Yetayeh'
+const date = 'Feb 10, 2020'
+
+// JSX element, header
+const header = (
+  <header>
+    <div className='header-wrapper'>
+      <h1>{title}</h1>
+      <h2>{subtitle}</h2>
+      <h3>
+        Instructor: {authorFirstName} {authorLastName}
+      </h3>
+      <p>Date: {date}</p>
+    </div>
+  </header>
+)
+```
 
 ### Injecting a number to JSX Element
 
+```js
+const numOne = 3
+const numTwo = 2
+
+const result = (
+  <p>
+    {numOne} + {numTwo} = {numOne + numTwo}
+  </p>
+)
+```
+
+As you can see in the above example, it is possible to do some arithmetic calculation and ternary operations.
+
 ### Injecting an array to JSX Element
 
+To give example for an array, let change the HTML, CSS, JavaScript an array.
+
+```js
+const techs = ['HTML', 'CSS', 'JavaScript']
+
+// JSX element, main
+const main = (
+  <main>
+    <div className='main-wrapper'>
+      <p>
+        Prerequisite to get started{' '}
+        <strong>
+          <em>react.js</em>
+        </strong>
+        :
+      </p>
+      <ul>{techs}</ul>
+    </div>
+  </main>
+)
+```
+
 ### Injecting an object to JSX Element
+
+We can inject string, number, boolean, array data to JSX but we can not inject object. We should extract or destructure the content of the object before we inject the JSX element.
+
+Now, let us put everything together. Now, the data is injected dynamically to the JSX.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Aldrich|Lato:300,400,700|Montserrat:300,400,500|Nunito:300,400,600|Oswald|Raleway+Dots|Raleway:300,400|Roboto:300,400,500&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>React For Everyone</title>
+    <style>
+      /* == General style === */
+      * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+      }
+
+      html,
+      body {
+        height: 100%;
+        line-height: 1.5;
+        font-family: 'Montserrat';
+        font-weight: 300;
+        color: black;
+      }
+
+      .root {
+        min-height: 100%;
+        position: relative;
+      }
+
+      .header-wrapper,
+      .main-wrapper,
+      .footer-wrapper {
+        width: 85%;
+        margin: auto;
+      }
+
+      .header-wrapper,
+      .main-wrapper {
+        padding: 10px;
+        margin: 2px auto;
+      }
+
+      h1 {
+        font-size: 70px;
+        font-weight: 300;
+      }
+
+      h2,
+      h3 {
+        font-weight: 300;
+      }
+
+      header {
+        background-color: #61dbfb;
+        padding: 25;
+        padding: 10px;
+      }
+
+      main {
+        padding: 10px;
+        padding-bottom: 60px;
+        /* Height of the footer */
+      }
+
+      ul {
+        margin-left: 15px;
+      }
+
+      ul li {
+        list-style: none;
+      }
+
+      footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 60px;
+        /* Height of the footer */
+        background: #6cf;
+      }
+
+      .footer-wrapper {
+        font-weight: 400;
+        text-align: center;
+        line-height: 60px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="root"></div>
+
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+      // To get the root element from the HTML document
+      const rootElement = document.querySelector('.root')
+      // JSX element, header
+      const title = 'Getting Started React'
+      const subtitle = 'JavaScript Library'
+      const authorFirstName = 'Asabeneh'
+      const authorLastName = 'Yetayeh'
+      const date = 'Feb 10, 2020'
+
+      // JSX element, header
+      const header = (
+        <header>
+          <div className='header-wrapper'>
+            <h1>{title}</h1>
+            <h2>{subtitle}</h2>
+            <h3>
+              Instructor: {authorFirstName} {authorLastName}
+            </h3>
+            <p>Date: {date}</p>
+          </div>
+        </header>
+      )
+
+      const numOne = 3
+      const numTwo = 2
+
+      const result = (
+        <p>
+          {numOne} + {numTwo} = {numOne + numTwo}
+        </p>
+      )
+
+      // JSX element, main
+      const techs = ['HTML', 'CSS', 'JavaScript']
+
+      // JSX element, main
+      const main = (
+        <main>
+          <div className='main-wrapper'>
+            <p>
+              Prerequisite to get started{' '}
+              <strong>
+                <em>react.js</em>
+              </strong>
+              :
+            </p>
+            <ul>{techs}</ul>
+            {result}
+          </div>
+        </main>
+      )
+
+      const copyRight = 'Copyright 2020'
+
+      // JSX element, footer
+      const footer = (
+        <footer>
+          <div className='footer-wrapper'>
+            <p>{copyRight}</p>
+          </div>
+        </footer>
+      )
+
+      // JSX element, app
+      const app = (
+        <div className='app'>
+          {header}
+          {main}
+          {footer}
+        </div>
+      )
+
+      // we render the JSX element using the ReactDOM package
+      ReactDOM.render(app, rootElement)
+    </script>
+  </body>
+</html>
+```
+
+![Dynamic Data](images/dynamic_data.png)
+
+Now, you have a very good understanding of how to create JSX element and also how to inject data to JSX. In the next section, we will talk about component which more power and useful than JSX.
 
 ## Component
 
