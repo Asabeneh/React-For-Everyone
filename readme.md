@@ -710,7 +710,7 @@ Instead of style object using regular styling method is more easier than the abo
 </html>
 ```
 
-![Internal Style](../ReactForEveryone/images/internal_style.png)
+![Internal Style](./images/internal_style.png)
 
 ## Injecting data to JSX Element
 
@@ -1436,7 +1436,9 @@ const Header = () => {
 }
 ```
 
-Now, lets change the JSX elements we had to components. When we call JSX element we used curly brackets when we call components we do as follows <ComponentName />.
+## Rendering component
+
+Now, lets change all the JSX elements we had to components. When we call JSX element we used curly brackets and when we call components we do as follows <ComponentName />.
 
 ```html
 <!DOCTYPE html>
@@ -1606,7 +1608,7 @@ Now, lets change the JSX elements we had to components. When we call JSX element
 
 ![Rendering Components](images/rendering_componnets.png)
 
-## Rendering component
+
 
 ## Props
 
