@@ -133,7 +133,7 @@ const header = (
     <h1>Getting Started React</h1>
     <h2>JavaScript Library</h2>
     <h3>Asabeneh Yetayeh</h3>
-    <h4>Feb 10, 2020</h4>
+    <p>Feb 10, 2020</p>
   </header>
 )
 ```
@@ -155,7 +155,6 @@ Now, you knew JSX and JSX element. Lets render the JSX element on the browser, i
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>React For Everyone</title>
   </head>
 
@@ -179,6 +178,7 @@ Now, you knew JSX and JSX element. Lets render the JSX element on the browser, i
       const jsxElement = <h1>I am a JSX element</h1>
 
       // we render the JSX element using the ReactDOM package
+      // ReactDOM has the render method and the render method takes two argument
       ReactDOM.render(jsxElement, rootElement)
     </script>
   </body>
@@ -195,7 +195,6 @@ Let us render more content. To render more content the JSX element should have m
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>React For Everyone</title>
   </head>
 
@@ -221,11 +220,12 @@ Let us render more content. To render more content the JSX element should have m
           <h1>Getting Started React</h1>
           <h2>JavaScript Library</h2>
           <h3>Asabeneh Yetayeh</h3>
-          <h4>Feb 10, 2020</h4>
+          <p>Feb 10, 2020</p>
         </header>
       )
 
       // we render the JSX element using the ReactDOM package
+      // ReactDOM has the render method and the render method takes two argument
       ReactDOM.render(header, rootElement)
     </script>
   </body>
@@ -271,7 +271,7 @@ const header = (
     <h1>Getting Started React</h1>
     <h2>JavaScript Library</h2>
     <h3>Asabeneh Yetayeh</h3>
-    <h4>Feb 10, 2020</h4>
+    <p>Feb 10, 2020</p>
   </header>
 )
 
@@ -309,8 +309,6 @@ Now, let us put everything together and render it to the browser.
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-
     <title>React For Everyone</title>
   </head>
 
@@ -336,7 +334,7 @@ Now, let us put everything together and render it to the browser.
           <h1>Getting Started React</h1>
           <h2>JavaScript Library</h2>
           <h3>Asabeneh Yetayeh</h3>
-          <h4>Feb 10, 2020</h4>
+          <p>Feb 10, 2020</p>
         </header>
       )
 
@@ -369,6 +367,7 @@ Now, let us put everything together and render it to the browser.
       )
 
       // we render the JSX element using the ReactDOM package
+      // ReactDOM has the render method and the render method takes two argument
       ReactDOM.render(app, rootElement)
     </script>
   </body>
@@ -378,6 +377,340 @@ Now, let us put everything together and render it to the browser.
 ![Rendering Multiple JSX Elements](./images/rendering_multiple_js_elements.png)
 
 ## Style and className
+
+So far, we did not say anything about style in react. Now, let us add style to our JSX elements. Inline style became very popular after the emergence of react. Let us add border to the header JSX element.
+
+```js
+const header = (
+  <header style={{ border: '2px solid orange' }}>
+    <h1>Getting Started React</h1>
+    <h2>JavaScript Library</h2>
+    <h3>Asabeneh Yetayeh</h3>
+    <p>Feb 10, 2020</p>
+  </header>
+)
+
+// or we can write it
+
+const style = { border: '2px solid orange' }
+
+const header = (
+  <header style={style}>
+    <h1>Getting Started React</h1>
+    <h2>JavaScript Library</h2>
+    <h3>Asabeneh Yetayeh</h3>
+    <p>Feb 10, 2020</p>
+  </header>
+)
+```
+
+Let us apply some style to our JSX elements and see the result.
+
+![Styling JSX Element](images/styling_jsx_element.png).
+
+It is good practice to open the browser console while you are developing your application to know if everything goes well.
+
+Let us keep styling all the JSX elements we have created:the header, main and footer. We can also use regular internal styling to style our application. It is very common in the react developer community people using only classes instead of id. In this material, I will use only class instead of id.
+
+In JSX element we write className instead of class because class is a reserved word in JavaScript. Similar to className, htmlFor instead of for in label. See the example below.
+
+```js
+const title = <h1 className='title'>Getting Started React</h1>
+const inputField = (
+  <div>
+    <label htmlFor='firstname'>First Name</label>
+    <input type='text' id='firstname' placeholder='First Name' />
+  </div>
+)
+```
+
+The id used in the input element is not for styling purpose instead to refer the label to the input field.
+
+If class is used instead of className you will see such kind of warning.
+
+![Class Name warning](../ReactForEveryone/images/className_warning.png)
+
+Now, you know how to use the inline style and how to use className and let us style all the JSX elements.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React For Everyone</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        line-height: 1.5;
+        font-family: 'Lato';
+      }
+
+      .root {
+        min-height: 100%;
+        position: relative;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="root"></div>
+
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+      // To get the root element from the HTML document
+      const rootElement = document.querySelector('.root')
+
+      // style
+      const headerStyles = {
+        backgroundColor: '#61DBFB',
+        fontFamily: 'Helvetica Neue',
+        padding: 25,
+        lineHeight: 1.5
+      }
+
+      // JSX element, header
+      const header = (
+        <header style={headerStyles}>
+          <div className='header-wrapper'>
+            <h1>Getting Started React</h1>
+            <h2>JavaScript Library</h2>
+            <h3>Asabeneh Yetayeh</h3>
+            <p>Feb 10, 2020</p>
+          </div>
+        </header>
+      )
+
+      // JSX element, main
+      const mainStyles = {
+        backgroundColor: '#F3F0F5'
+      }
+      const main = (
+        <main style={mainStyles}>
+          <p>Prerequisite to get started react.js:</p>
+          <ul>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li> JavaScript</li>
+          </ul>
+        </main>
+      )
+
+      const footerStyles = {
+        backgroundColor: '#61DBFB'
+      }
+      // JSX element, footer
+      const footer = (
+        <footer style={footerStyles}>
+          <p>Copyright 2020</p>
+        </footer>
+      )
+
+      // JSX element, app
+      const app = (
+        <div className='app'>
+          {header}
+          {main}
+          {footer}
+        </div>
+      )
+
+      // we render the JSX element using the ReactDOM package
+      ReactDOM.render(app, rootElement)
+    </script>
+  </body>
+</html>
+```
+
+![Styling all jsx elements](images/styling_all_jsx_elements.png)
+
+Instead of style object using regular styling method is more easier than the above. Now, let us use internal style or external style method to style all the JSX elements.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+        href="https://fonts.googleapis.com/css?family=Aldrich|Lato:300,400,700|Montserrat:300,400,500|Nunito:300,400,600|Oswald|Raleway+Dots|Raleway:300,400|Roboto:300,400,500&display=swap"
+        rel="stylesheet">
+
+
+    <title>React For Everyone</title>
+    <style>
+        /* == General style === */
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0
+        }
+
+
+        html,
+        body {
+            height: 100%;
+            line-height: 1.5;
+            font-family: 'Montserrat';
+            font-weight: 300;
+            color: black;
+
+        }
+
+        .root {
+            min-height: 100%;
+            position: relative;
+        }
+
+        .header-wrapper,
+        .main-wrapper,
+        .footer-wrapper {
+            width: 85%;
+            margin: auto;
+
+        }
+
+        .header-wrapper,
+        .main-wrapper {
+            padding: 10px;
+            margin: 2px auto;
+        }
+
+        h1 {
+            font-size: 70px;
+            font-weight: 300;
+        }
+
+        h2,
+        h3 {
+            font-weight: 300;
+        }
+
+        header {
+            background-color: #61DBFB;
+            padding: 25;
+            padding: 10px;
+        }
+
+        main {
+            padding: 10px;
+            padding-bottom: 60px;
+            /* Height of the footer */
+
+        }
+
+        ul {
+            margin-left: 15px;
+        }
+
+
+
+        ul li {
+            list-style: none;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 60px;
+            /* Height of the footer */
+            background: #6cf;
+
+        }
+
+        .footer-wrapper {
+            font-weight: 400;
+            text-align: center;
+            line-height: 60px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="root"> </div>
+
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        // To get the root element from the HTML document
+        const rootElement = document.querySelector('.root')
+
+    
+
+
+    // JSX element, header
+    const header = (
+    <header>
+  
+        <div className = "header-wrapper">
+             <h1>Getting Started React</h1>
+             <h2>JavaScript Library</h2>
+             <h3>Instructor: Asabeneh Yetayeh</h3>
+             <p>Date: Feb 10, 2020</p>
+        </div>
+    </header>
+    )
+
+    // JSX element, main
+    const main = (
+    <main>
+        <div className="main-wrapper">
+             <p>Prerequisite to get started <strong><em>react.js</em></strong>:</p>
+             <ul>
+                 <li>HTML</li>
+                 <li>CSS</li>
+                 <li> JavaScript</li>
+             </ul>
+        </div>
+    </main>
+    )
+
+     // JSX element, footer
+    const footer = (
+    <footer>
+        <div className="footer-wrapper">
+             <p>Copyright 2020</p>
+        </div>
+    </footer>
+    )
+
+     // JSX element, app
+    const app = (
+    <div className="app">
+        {header}
+        {main}
+        {footer}
+    </div>
+    )
+
+    // we render the JSX element using the ReactDOM package
+    ReactDOM.render(app, rootElement)
+    </script>
+</body>
+</html>
+```
+
+![Internal Style](../ReactForEveryone/images/internal_style.png)
 
 ## Injecting data to JSX Element
 
