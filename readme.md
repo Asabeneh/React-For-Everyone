@@ -82,7 +82,7 @@ Why we choose to use react ? We use react because of the following reasons:
 
 ### Exercises
 
-1. Why chose to use react? 
+1. Why chose to use react?
 
 ## 3. JSX
 
@@ -142,10 +142,240 @@ As you can see the header element is a parent element for all the inner HTML ele
 
 ### Exercises
 
-1. What is JSX 
+1. What is JSX element
 2. Write some JSX?
 
 ## Rendering JSX Element
+
+Now, you knew JSX and JSX element. Lets render the JSX element on the browser, in order to do so we need the react and ReactDOM library. In addition to the React and ReactDOM we need babel to transpile the JSX to JavaScript code. The ReactDOM package has a method render. The render method takes two arguments:a JSX element or a component and the root document.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>React For Everyone</title>
+  </head>
+
+  <body>
+    <div class="root"></div>
+
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+      // To get the root element from the HTML document
+      const rootElement = document.querySelector('.root')
+
+      // JSX element
+      const jsxElement = <h1>I am a JSX element</h1>
+
+      // we render the JSX element using the ReactDOM package
+      ReactDOM.render(jsxElement, rootElement)
+    </script>
+  </body>
+</html>
+```
+
+![Rendering JSX](images/rendering_jsx.png)
+
+Let us render more content. To render more content the JSX element should have more content. For instance, we can create a header of a website and header may have a title subtitle, author or date etc.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>React For Everyone</title>
+  </head>
+
+  <body>
+    <div class="root"></div>
+
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+      // To get the root element from the HTML document
+      const rootElement = document.querySelector('.root')
+
+      // JSX element
+      const header = (
+        <header>
+          <h1>Getting Started React</h1>
+          <h2>JavaScript Library</h2>
+          <h3>Asabeneh Yetayeh</h3>
+          <h4>Feb 10, 2020</h4>
+        </header>
+      )
+
+      // we render the JSX element using the ReactDOM package
+      ReactDOM.render(header, rootElement)
+    </script>
+  </body>
+</html>
+```
+
+![Rendering more content](images/rendering_more_content.png)
+
+We have created a JSX element for the header of our website. How about the main and the footer for the website? Similar to the header, let us create a JSX element for the main and the footer.
+
+JSX element for the main part of the website.
+
+```js
+// JSX element
+const main = (
+  <main>
+    <p>Prerequisite to get started react.js:</p>
+    <ul>
+      <li>HTML</li>
+      <li>CSS</li>
+      <li> JavaScript</li>
+    </ul>
+  </main>
+)
+```
+
+JSX element for the footer part of the website.
+
+```js
+// JSX element
+const footer = (
+  <footer>
+    <p>Copyright 2020</p>
+  </footer>
+)
+```
+
+Now, we have three JSX elements:the header, main and footer. The best way to render all the three JSX element is by wrapping in a parent JSX element. To include JSX element inside another JSX element we use the {} and call the name of the JSX inside the curly bracket.
+
+```js
+const header = (
+  <header>
+    <h1>Getting Started React</h1>
+    <h2>JavaScript Library</h2>
+    <h3>Asabeneh Yetayeh</h3>
+    <h4>Feb 10, 2020</h4>
+  </header>
+)
+
+const main = (
+  <main>
+    <p>Prerequisite to get started react.js:</p>
+    <ul>
+      <li>HTML</li>
+      <li>CSS</li>
+      <li> JavaScript</li>
+    </ul>
+  </main>
+)
+
+const footer = (
+  <footer>
+    <p>Copyright 2020</p>
+  </footer>
+)
+
+const app = (
+  <div>
+    {header}
+    {main}
+    {footer}
+  </div>
+)
+```
+
+Now, let us put everything together and render it to the browser.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <title>React For Everyone</title>
+  </head>
+
+  <body>
+    <div class="root"></div>
+
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+      // To get the root element from the HTML document
+      const rootElement = document.querySelector('.root')
+
+      // JSX element, header
+      const header = (
+        <header>
+          <h1>Getting Started React</h1>
+          <h2>JavaScript Library</h2>
+          <h3>Asabeneh Yetayeh</h3>
+          <h4>Feb 10, 2020</h4>
+        </header>
+      )
+
+      // JSX element, main
+      const main = (
+        <main>
+          <p>Prerequisite to get started react.js:</p>
+          <ul>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li> JavaScript</li>
+          </ul>
+        </main>
+      )
+
+      // JSX element, footer
+      const footer = (
+        <footer>
+          <p>Copyright 2020</p>
+        </footer>
+      )
+
+      // JSX element, app
+      const app = (
+        <div>
+          {header}
+          {main}
+          {footer}
+        </div>
+      )
+
+      // we render the JSX element using the ReactDOM package
+      ReactDOM.render(app, rootElement)
+    </script>
+  </body>
+</html>
+```
+
+![Rendering Multiple JSX Elements](./images/rendering_multiple_js_elements.png)
 
 ## Style and className
 
