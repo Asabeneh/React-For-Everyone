@@ -818,7 +818,7 @@ Now, let us put everything together. Now, the data is injected dynamically to th
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
-      href="https://fonts.googleapis.com/css?family=Aldrich|Lato:300,400,700|Montserrat:300,400,500|Nunito:300,400,600|Oswald|Raleway+Dots|Raleway:300,400|Roboto:300,400,500&display=swap"
+      href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500|Roboto:300,400,500&display=swap"
       rel="stylesheet"
     />
 
@@ -999,9 +999,612 @@ Now, let us put everything together. Now, the data is injected dynamically to th
 
 ![Dynamic Data](images/dynamic_data.png)
 
-Now, you have a very good understanding of how to create JSX element and also how to inject data to JSX. In the next section, we will talk about component which more power and useful than JSX.
+As you can see the lists are all in one line. Therefore, we should format the list the way we want in order to format the list we should modify the array before we inject it. We can modify the array using _map_.
+
+```js
+const techs = ['HTML', 'CSS', 'JavaScript']
+const techsFormatted = techs.map(tech => <li>{tech}</li>)
+```
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500|Roboto:300,400,500&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>React For Everyone</title>
+    <style>
+      /* == General style === */
+      * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+      }
+
+      html,
+      body {
+        height: 100%;
+        line-height: 1.5;
+        font-family: 'Montserrat';
+        font-weight: 300;
+        color: black;
+      }
+
+      .root {
+        min-height: 100%;
+        position: relative;
+      }
+
+      .header-wrapper,
+      .main-wrapper,
+      .footer-wrapper {
+        width: 85%;
+        margin: auto;
+      }
+
+      .header-wrapper,
+      .main-wrapper {
+        padding: 10px;
+        margin: 2px auto;
+      }
+
+      h1 {
+        font-size: 70px;
+        font-weight: 300;
+      }
+
+      h2,
+      h3 {
+        font-weight: 300;
+      }
+
+      header {
+        background-color: #61dbfb;
+        padding: 25;
+        padding: 10px;
+      }
+
+      main {
+        padding: 10px;
+        padding-bottom: 60px;
+        /* Height of the footer */
+      }
+
+      ul {
+        margin-left: 15px;
+      }
+
+      ul li {
+        list-style: none;
+      }
+
+      footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 60px;
+        /* Height of the footer */
+        background: #6cf;
+      }
+
+      .footer-wrapper {
+        font-weight: 400;
+        text-align: center;
+        line-height: 60px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="root"></div>
+
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+      // To get the root element from the HTML document
+      const rootElement = document.querySelector('.root')
+      // JSX element, header
+      const title = 'Getting Started React'
+      const subtitle = 'JavaScript Library'
+      const authorFirstName = 'Asabeneh'
+      const authorLastName = 'Yetayeh'
+      const date = 'Feb 10, 2020'
+
+      // JSX element, header
+      const header = (
+        <header>
+          <div className='header-wrapper'>
+            <h1>{title}</h1>
+            <h2>{subtitle}</h2>
+            <h3>
+              Instructor: {authorFirstName} {authorLastName}
+            </h3>
+            <p>Date: {date}</p>
+          </div>
+        </header>
+      )
+
+      const numOne = 3
+      const numTwo = 2
+
+      const result = (
+        <p>
+          {numOne} + {numTwo} = {numOne + numTwo}
+        </p>
+      )
+
+      // JSX element, main
+      const techs = ['HTML', 'CSS', 'JavaScript']
+      const techsFormatted = techs.map(tech => <li>{tech}</li>)
+
+      // JSX element, main
+      const main = (
+        <main>
+          <div className='main-wrapper'>
+            <p>
+              Prerequisite to get started{' '}
+              <strong>
+                <em>react.js</em>
+              </strong>
+              :
+            </p>
+            <ul>{techsFormatted}</ul>
+            {result}
+          </div>
+        </main>
+      )
+
+      const copyRight = 'Copyright 2020'
+
+      // JSX element, footer
+      const footer = (
+        <footer>
+          <div className='footer-wrapper'>
+            <p>{copyRight}</p>
+          </div>
+        </footer>
+      )
+
+      // JSX element, app
+      const app = (
+        <div className='app'>
+          {header}
+          {main}
+          {footer}
+        </div>
+      )
+
+      // we render the JSX element using the ReactDOM package
+      ReactDOM.render(app, rootElement)
+    </script>
+  </body>
+</html>
+```
+
+![List Id](images/map_list_id.png)
+As you can see above, now the lists are formatted properly but there is warning on the console which says each list child should have a unique. In the array, we do not have id but it is common to pass id as a unique when you have id in your data. Now, let us just pass each items us a unique key and remove the warning.
+
+```js
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+        href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500|Roboto:300,400,500&display=swap"
+        rel="stylesheet">
+
+
+    <title>React For Everyone</title>
+    <style>
+        /* == General style === */
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0
+        }
+
+
+        html,
+        body {
+            height: 100%;
+            line-height: 1.5;
+            font-family: 'Montserrat';
+            font-weight: 300;
+            color: black;
+
+        }
+
+        .root {
+            min-height: 100%;
+            position: relative;
+        }
+
+        .header-wrapper,
+        .main-wrapper,
+        .footer-wrapper {
+            width: 85%;
+            margin: auto;
+
+        }
+
+        .header-wrapper,
+        .main-wrapper {
+            padding: 10px;
+            margin: 2px auto;
+        }
+
+        h1 {
+            font-size: 70px;
+            font-weight: 300;
+        }
+
+        h2,
+        h3 {
+            font-weight: 300;
+        }
+
+        header {
+            background-color: #61DBFB;
+            padding: 25;
+            padding: 10px;
+        }
+
+        main {
+            padding: 10px;
+            padding-bottom: 60px;
+            /* Height of the footer */
+
+        }
+
+        ul {
+            margin-left: 15px;
+        }
+
+
+
+        ul li {
+            list-style: none;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 60px;
+            /* Height of the footer */
+            background: #6cf;
+
+        }
+
+        .footer-wrapper {
+            font-weight: 400;
+            text-align: center;
+            line-height: 60px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="root"> </div>
+
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        // To get the root element from the HTML document
+       const rootElement = document.querySelector('.root')
+       // JSX element, header
+       const title = 'Getting Started React'
+       const subtitle = 'JavaScript Library'
+       const authorFirstName = 'Asabeneh'
+       const authorLastName = 'Yetayeh'
+       const date = 'Feb 10, 2020'
+
+       // JSX element, header
+       const header = (
+       <header>
+           <div className='header-wrapper'>
+               <h1>{title}</h1>
+               <h2>{subtitle}</h2>
+               <h3>
+                   Instructor: {authorFirstName} {authorLastName}
+               </h3>
+               <p>Date: {date}</p>
+           </div>
+       </header>
+       )
+
+       const numOne = 3
+       const numTwo = 2
+
+       const result = (
+       <p>
+           {numOne} + {numTwo} = {numOne + numTwo}
+       </p>
+       )
+
+       // JSX element, main
+      const techs = ['HTML', 'CSS', 'JavaScript']
+      const techsFormatted = techs.map((tech) => <li key={tech}>{tech}</li>)
+
+       // JSX element, main
+       const main = (
+       <main>
+           <div className='main-wrapper'>
+               <p>
+                   Prerequisite to get started{' '}
+                   <strong>
+                       <em>react.js</em>
+                   </strong>
+                   :
+               </p>
+               <ul>{techsFormatted}</ul>
+               {result}
+           </div>
+       </main>
+       )
+
+
+       const copyRight = 'Copyright 2020'
+
+       // JSX element, footer
+       const footer = (
+       <footer>
+           <div className="footer-wrapper">
+               <p>{copyRight}</p>
+           </div>
+
+       </footer>
+       )
+
+       // JSX element, app
+       const app = (
+       <div className="app">
+           {header}
+           {main}
+           {footer}
+       </div>
+       )
+
+       // we render the JSX element using the ReactDOM package
+       ReactDOM.render(app, rootElement)
+
+    </script>
+</body>
+
+</html>
+
+```
+
+![Removing warning ](images/removing_unique_id_warning.png)
+
+Now, you have a very good understanding of how to create JSX element and also how to inject data to JSX. In the next section, we will talk about component which are more power and useful than JSX.
 
 ## Component
+
+React can help us to build reusable components. The following diagram shows different components. All the components have different border colors. Have different component means we assemble them together to create an application.
+
+![components](./images/components.png)
+
+So, let us change all the JSX we change to components. Components in react are functions which return a JSX. Component name should start with an uppercase and if the name is two word name we use CamelCase.
+
+```js
+// JSX element, header
+const header = (
+  <header style={headerStyles}>
+    <div className='header-wrapper'>
+      <h1>Getting Started React</h1>
+      <h2>JavaScript Library</h2>
+      <h3>Asabeneh Yetayeh</h3>
+      <h4>Feb 10, 2020</h4>
+    </div>
+  </header>
+)
+
+// React Component
+const Header = () => {
+  return header
+}
+
+// or we can just return the JSX
+
+const Header = () => {
+  return (
+    <header style={headerStyles}>
+      <div className='header-wrapper'>
+        <h1>Getting Started React</h1>
+        <h2>JavaScript Library</h2>
+        <h3>Asabeneh Yetayeh</h3>
+        <h4>Feb 10, 2020</h4>
+      </div>
+    </header>
+  )
+}
+```
+
+Now, lets change the JSX elements we had to components. When we call JSX element we used curly brackets when we call components we do as follows <ComponentName />.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500|Roboto:300,400,500&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>React For Everyone</title>
+    <style>
+      /* == General style === */
+      * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+      }
+
+      html,
+      body {
+        height: 100%;
+        line-height: 1.5;
+        font-family: 'Montserrat';
+        font-weight: 300;
+        color: black;
+      }
+
+      .root {
+        min-height: 100%;
+        position: relative;
+      }
+
+      .header-wrapper,
+      .main-wrapper,
+      .footer-wrapper {
+        width: 85%;
+        margin: auto;
+      }
+
+      .header-wrapper,
+      .main-wrapper {
+        padding: 10px;
+        margin: 2px auto;
+      }
+
+      h1 {
+        font-size: 70px;
+        font-weight: 300;
+      }
+
+      h2,
+      h3 {
+        font-weight: 300;
+      }
+
+      header {
+        background-color: #61dbfb;
+        padding: 25;
+        padding: 10px;
+      }
+
+      main {
+        padding: 10px;
+        padding-bottom: 60px;
+        /* Height of the footer */
+      }
+
+      ul {
+        margin-left: 15px;
+      }
+
+      ul li {
+        list-style: none;
+      }
+
+      footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 60px;
+        /* Height of the footer */
+        background: #6cf;
+      }
+
+      .footer-wrapper {
+        font-weight: 400;
+        text-align: center;
+        line-height: 60px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="root"></div>
+
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+      // To get the root element from the HTML document
+      const rootElement = document.querySelector('.root')
+
+      // Header Component
+      const Header = () => (
+        <header>
+          <div className='header-wrapper'>
+            <h1>Getting Started React</h1>
+            <h2>JavaScript Library</h2>
+            <h3>Asabeneh Yetayeh</h3>
+            <p>Feb 10, 2020</p>
+          </div>
+        </header>
+      )
+
+      // TechList Component
+      const TechList = () => {
+        const techs = ['HTML', 'CSS', 'JavaScript']
+        const techsFormatted = techs.map(tech => <li key={tech}>{tech}</li>)
+        return techsFormatted
+      }
+
+      // Main Component
+      const Main = () => (
+        <main>
+          <div className='main-wrapper'>
+            <p>Prerequisite to get started react.js:</p>
+            <ul>
+              <TechList />
+            </ul>
+          </div>
+        </main>
+      )
+
+      // Footer Component
+      const Footer = () => (
+        <footer>
+          <div className='footer-wrapper'>
+            <p>Copyright 2020</p>
+          </div>
+        </footer>
+      )
+
+      // The App, or the parent or the container component
+      const App = () => (
+        <div className='app'>
+          <Header />
+          <Main />
+          <Footer />
+        </div>
+      )
+
+      // we render the JSX element using the ReactDOM package
+      ReactDOM.render(<App />, rootElement)
+    </script>
+  </body>
+</html>
+```
+
+![Rendering Components](images/rendering_componnets.png)
 
 ## Rendering component
 
