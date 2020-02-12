@@ -1608,7 +1608,135 @@ Now, lets change all the JSX elements we had to components. When we call JSX ele
 
 ![Rendering Components](images/rendering_componnets.png)
 
+All the above components are functional components. Lets make also class based component. Class based component is made using JavaScript class and it inherits from Component. Let us learn how to make a class based component by converting all the functional components we made previous. It is not important to convert all but we are converting them for the sake of learning how to functional to class component.
 
+```js
+// Header Component
+// Functional component
+const Header = () => (
+  <header>
+    <div className='header-wrapper'>
+      <h1>Getting Started React</h1>
+      <h2>JavaScript Library</h2>
+      <h3>Asabeneh Yetayeh</h3>
+      <p>Feb 10, 2020</p>
+    </div>
+  </header>
+)
+
+// class base component
+
+class Header extends React.Component {
+  render() {
+    return (
+      <header>
+        <div className='header-wrapper'>
+          <h1>Getting Started React</h1>
+          <h2>JavaScript Library</h2>
+          <h3>Asabeneh Yetayeh</h3>
+          <p>Feb 10, 2020</p>
+        </div>
+      </header>
+    )
+  }
+}
+
+// TechList Component
+// functional component
+const TechList = () => {
+  const techs = ['HTML', 'CSS', 'JavaScript']
+  const techsFormatted = techs.map(tech => <li key={tech}>{tech}</li>)
+  return techsFormatted
+}
+
+// TechList Component
+// class base component
+class TechList extends React.Component {
+  render() {
+    const techs = ['HTML', 'CSS', 'JavaScript']
+    const techsFormatted = techs.map(tech => <li key={tech}>{tech}</li>)
+    return techsFormatted
+  }
+}
+
+// Main Component
+// Functional Component
+const Main = () => (
+  <main>
+    <div className='main-wrapper'>
+      <p>Prerequisite to get started react.js:</p>
+      <ul>
+        <TechList />
+      </ul>
+    </div>
+  </main>
+)
+
+// Main Component
+// Class Component
+class Main extends React.Component {
+  render() {
+    return (
+      <main>
+        <div className='main-wrapper'>
+          <p>Prerequisite to get started react.js:</p>
+          <ul>
+            <TechList />
+          </ul>
+        </div>
+      </main>
+    )
+  }
+}
+
+// Footer Component
+// Functional component
+const Footer = () => (
+  <footer>
+    <div className='footer-wrapper'>
+      <p>Copyright 2020</p>
+    </div>
+  </footer>
+)
+
+// Footer Component
+// Class component
+class Footer extends React.Component {
+  render() {
+    return (
+      <footer>
+        <div className='footer-wrapper'>
+          <p>Copyright 2020</p>
+        </div>
+      </footer>
+    )
+  }
+}
+
+// The App, or the parent or the container component
+// Functional Component
+const App = () => (
+  <div className='app'>
+    <Header />
+    <Main />
+    <Footer />
+  </div>
+)
+
+// The App, or the parent or the container component
+// Class Component
+class App extends React.Component {
+  render() {
+    return (
+      <div className='app'>
+        <Header />
+        <Main />
+        <Footer />
+      </div>
+    )
+  }
+}
+```
 
 ## Props
 
