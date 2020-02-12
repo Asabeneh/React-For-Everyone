@@ -2161,7 +2161,7 @@ const Header = ({title, subtitle, authorFirstName, authorLastName, date}) => (
   <div className='header-wrapper'>
     <h1>{title}</h1>
     <h2>{subtitle}</h2>
-    <h3>{authorFirstName} {props.authorLastName}</h3>
+    <h3>{authorFirstName} {authorLastName}</h3>
     <p>{date}</p>
   </div>
 </header>
