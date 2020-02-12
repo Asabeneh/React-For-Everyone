@@ -5,3 +5,5 @@ res.html
 .res.html
 component.html
 props.html
+prop-types.html
+destructuring.html

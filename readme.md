@@ -21,9 +21,11 @@
     - [Injecting an object to JSX Element](#injecting-an-object-to-jsx-element)
   - [Component](#component)
   - [Rendering component](#rendering-component)
+    - [Class Components](#class-components)
   - [Props](#props)
     - [propTypes](#proptypes)
     - [defaultProps](#defaultprops)
+    - [Destructuring props](#destructuring-props)
     - [Rendering lists](#rendering-lists)
   - [Events](#events)
   - [State](#state)
@@ -1398,6 +1400,11 @@ Now, you have a very good understanding of how to create JSX element and also ho
 
 React can help us to build reusable components. The following diagram shows different components. All the components have different border colors. Have different component means we assemble them together to create an application.
 
+Components can be:
+
+- Functional Component
+- Class Component
+
 ![components](./images/components.png)
 
 So, let us change all the JSX we change to components. Components in react are functions which return a JSX. Component name should start with an uppercase and if the name is two word name we use CamelCase.
@@ -1608,6 +1615,8 @@ Now, lets change all the JSX elements we had to components. When we call JSX ele
 
 ![Rendering Components](images/rendering_componnets.png)
 
+### Class Components
+
 All the above components are functional components. Lets make also class based component. Class based component is made using JavaScript class and it inherits from Component. Let us learn how to make a class based component by converting all the functional components we made previous. It is not important to convert all but we are converting them for the sake of learning how to functional to class component.
 
 ```js
@@ -1740,9 +1749,473 @@ class App extends React.Component {
 
 ## Props
 
+In the previous section, we saw how to inject dynamic data type JSX. Now, let us see how we use dynamic data in component and also how to pass data as props.
+
+```js
+const title = 'Getting Started React'
+const subtitle = 'JavaScript Library'
+const authorFirstName = 'Asabeneh'
+const authorLastName = 'Yetayeh'
+const date = 'Feb 10, 2020'
+
+// Header Component
+const Header = () => (
+  <header>
+    <div className='header-wrapper'>
+      <h1>{title}</h1>
+      <h2>{subtitle}</h2>
+      <h3>{authorFirstName} {authorLastName]</h3>
+      <p>{date}</p>
+    </div>
+  </header>
+)
+```
+
+Instead of injecting data we can also pass the data as a props. React props is similar to parameters in function. React props is an object which you get instantly when you create a component.
+
+```js
+const title = 'Getting Started React'
+const subtitle = 'JavaScript Library'
+const authorFirstName = 'Asabeneh'
+const authorLastName = 'Yetayeh'
+const date = 'Feb 10, 2020'
+
+// Header Component
+const Header = props => (
+  <header>
+    <div className='header-wrapper'>
+      <h1>{props.title}</h1>
+      <h2>{props.subtitle}</h2>
+      <h3>
+        {props.authorFirstName} {props.authorLastName}
+      </h3>
+      <p>{props.date}</p>
+    </div>
+  </header>
+)
+
+// The App, or the parent or the container component
+// Functional Component
+const App = () => (
+  <div className='app'>
+    <Header
+      title={title}
+      subtitle={subtitle}
+      authorFirstName={authorFirstName}
+      authorLastName={authorLastName}
+      date={date}
+    />
+    <Main />
+    <Footer />
+  </div>
+)
+```
+
+As you can see in the above code, the data passed as props to Header component.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500|Roboto:300,400,500&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>React For Everyone</title>
+    <style>
+      /* == General style === */
+      * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+      }
+
+      html,
+      body {
+        height: 100%;
+        line-height: 1.5;
+        font-family: 'Montserrat';
+        font-weight: 300;
+        color: black;
+      }
+
+      .root {
+        min-height: 100%;
+        position: relative;
+      }
+
+      .header-wrapper,
+      .main-wrapper,
+      .footer-wrapper {
+        width: 85%;
+        margin: auto;
+      }
+
+      .header-wrapper,
+      .main-wrapper {
+        padding: 10px;
+        margin: 2px auto;
+      }
+
+      h1 {
+        font-size: 70px;
+        font-weight: 300;
+      }
+
+      h2,
+      h3 {
+        font-weight: 300;
+      }
+
+      header {
+        background-color: #61dbfb;
+        padding: 25;
+        padding: 10px;
+      }
+
+      main {
+        padding: 10px;
+        padding-bottom: 60px;
+        /* Height of the footer */
+      }
+
+      ul {
+        margin-left: 15px;
+      }
+
+      ul li {
+        list-style: none;
+      }
+
+      footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 60px;
+        /* Height of the footer */
+        background: #6cf;
+      }
+
+      .footer-wrapper {
+        font-weight: 400;
+        text-align: center;
+        line-height: 60px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="root"></div>
+
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+      // To get the root element from the HTML document
+      const rootElement = document.querySelector('.root')
+
+      const title = 'Getting Started React'
+      const subtitle = 'JavaScript Library'
+      const authorFirstName = 'Asabeneh'
+      const authorLastName = 'Yetayeh'
+      const date = 'Feb 10, 2020'
+      const copyRight = 'Copyright 2020'
+      const techs = ['HTML', 'CSS', 'JavaScript']
+
+      // Header Component
+      const Header = props => (
+        <header>
+          <div className='header-wrapper'>
+            <h1>{props.title}</h1>
+            <h2>{props.subtitle}</h2>
+            <h3>
+              {props.authorFirstName} {props.authorLastName}
+            </h3>
+            <p>{props.date}</p>
+          </div>
+        </header>
+      )
+
+      // TechList Component
+      const TechList = props => {
+        const techsFormatted = props.techs.map(tech => (
+          <li key={tech}>{tech}</li>
+        ))
+        return techsFormatted
+      }
+
+      // Main Component
+      const Main = () => (
+        <main>
+          <div className='main-wrapper'>
+            <p>Prerequisite to get started react.js:</p>
+            <ul>
+              <TechList techs={techs} />
+            </ul>
+          </div>
+        </main>
+      )
+
+      // Footer Component
+      const Footer = props => (
+        <footer>
+          <div className='footer-wrapper'>
+            <p>{props.copyRight}</p>
+          </div>
+        </footer>
+      )
+
+      // The App, or the parent or the container component
+      const App = () => (
+        <div className='app'>
+          <Header
+            title={title}
+            subtitle={subtitle}
+            authorFirstName={authorFirstName}
+            authorLastName={authorLastName}
+            date={date}
+          />
+          <Main />
+          <Footer copyRight={copyRight} />
+        </div>
+      )
+
+      // we render the JSX element using the ReactDOM package
+      ReactDOM.render(<App />, rootElement)
+    </script>
+  </body>
+</html>
+```
+
 ### propTypes
 
+So far, we are using CDN. After few lesson, we will use create-react-app to create a react project and we will start using importing packages instead of CDN. But for the time being I am using this link to access the 'prop-types' package.
+
 ### defaultProps
+
+### Destructuring props
+
+Destructuring code to some extent makes easy to read. Let us destructure the props in Header component. Everything we passed a props is stored in props object. Therefore, props is an object and we can destructure the properties.
+
+```js
+// Header Component
+const Header = (props) => (
+const {title, subtitle, authorFirstName, authorLastName, date}  = props
+<header>
+  <div className='header-wrapper'>
+    <h1>{title}</h1>
+    <h2>{subtitle}</h2>
+    <h3>{authorFirstName} {props.authorLastName}</h3>
+    <p>{date}</p>
+  </div>
+</header>
+)
+```
+
+Some developer prefer the above destructuring but I and most prefer the following:
+
+```js
+// Header Component
+const Header = ({title, subtitle, authorFirstName, authorLastName, date}) => (
+<header>
+  <div className='header-wrapper'>
+    <h1>{title}</h1>
+    <h2>{subtitle}</h2>
+    <h3>{authorFirstName} {props.authorLastName}</h3>
+    <p>{date}</p>
+  </div>
+</header>
+)
+```
+
+Let us destructure all the props in Header, TechList and Footer. See the destructure props in the following file.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link
+    href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500|Roboto:300,400,500&display=swap"
+    rel="stylesheet" />
+
+  <title>React For Everyone</title>
+  <style>
+    /* == General style === */
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+
+    html,
+    body {
+      height: 100%;
+      line-height: 1.5;
+      font-family: 'Montserrat';
+      font-weight: 300;
+      color: black;
+    }
+
+    .root {
+      min-height: 100%;
+      position: relative;
+    }
+
+    .header-wrapper,
+    .main-wrapper,
+    .footer-wrapper {
+      width: 85%;
+      margin: auto;
+    }
+
+    .header-wrapper,
+    .main-wrapper {
+      padding: 10px;
+      margin: 2px auto;
+    }
+
+    h1 {
+      font-size: 70px;
+      font-weight: 300;
+    }
+
+    h2,
+    h3 {
+      font-weight: 300;
+    }
+
+    header {
+      background-color: #61dbfb;
+      padding: 25;
+      padding: 10px;
+    }
+
+    main {
+      padding: 10px;
+      padding-bottom: 60px;
+      /* Height of the footer */
+    }
+
+    ul {
+      margin-left: 15px;
+    }
+
+    ul li {
+      list-style: none;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 60px;
+      /* Height of the footer */
+      background: #6cf;
+    }
+
+    .footer-wrapper {
+      font-weight: 400;
+      text-align: center;
+      line-height: 60px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="root"></div>
+
+  <script
+    crossorigin
+    src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script
+    crossorigin
+    src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    // To get the root element from the HTML document
+const rootElement = document.querySelector('.root')
+
+const title = 'Getting Started React'
+const subtitle = 'JavaScript Library'
+const authorFirstName = 'Asabeneh'
+const authorLastName = 'Yetayeh'
+const date = 'Feb 10, 2020'
+const copyRight = 'Copyright 2020'
+const techs = ['HTML', 'CSS', 'JavaScript']
+
+// Header Component
+const Header = ({title, subtitle, authorFirstName, authorLastName, date}) => (
+<header>
+  <div className='header-wrapper'>
+    <h1>{title}</h1>
+    <h2>{subtitle}</h2>
+    <h3>{authorFirstName} {props.authorLastName}</h3>
+    <p>{date}</p>
+  </div>
+</header>
+)
+
+
+// TechList Component
+const TechList = ({techs}) => {
+  const techsFormatted = techs.map(tech => <li key={tech}>{tech}</li>)
+  return techsFormatted
+}
+
+// Main Component
+const Main = () => (
+  <main>
+    <div className='main-wrapper'>
+      <p>Prerequisite to get started react.js:</p>
+      <ul>
+        <TechList techs = {techs}/>
+      </ul>
+    </div>
+  </main>
+)
+
+// Footer Component
+const Footer = ({copyRight}) => (
+  <footer>
+    <div className='footer-wrapper'>
+      <p>{copyRight}</p>
+    </div>
+  </footer>
+)
+
+  // The App, or the parent or the container component
+ const App = () => (
+ <div className='app'>
+   <Header
+     title={title}
+     subtitle={subtitle}
+     authorFirstName={authorFirstName}
+     authorLastName={authorLastName}
+     date={date} />
+   <Main />
+   <Footer copyRight = {copyRight} />
+ </div>
+ )
+
+// we render the JSX element using the ReactDOM package
+  ReactDOM.render(<App />, rootElement)
+    </script>
+</body>
+
+</html>
+```
 
 ### Rendering lists
 
