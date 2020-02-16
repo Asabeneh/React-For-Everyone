@@ -4,7 +4,7 @@
 
 - [React For Everyone](#react-for-everyone)
   - [Introduction](#introduction)
-  - [1. What is React ?](#1-what-is-react)
+  - [1. What is React?](#1-what-is-react)
     - [Exercises](#exercises)
   - [2. Why React ?](#2-why-react)
     - [Exercises](#exercises-1)
@@ -20,7 +20,7 @@
     - [Injecting an array to JSX Element](#injecting-an-array-to-jsx-element)
     - [Injecting an object to JSX Element](#injecting-an-object-to-jsx-element)
   - [Component](#component)
-  - [Rendering component](#rendering-component)
+  - [Rendering components](#rendering-components)
     - [Class Components](#class-components)
   - [Props](#props)
     - [propTypes](#proptypes)
@@ -44,7 +44,6 @@
 ## Introduction
 
 Prerequisite to get started with React. You should have a good understanding of the following technologies:
-Prerequisite technologies:
 
 - HTML
 - CSS
@@ -52,9 +51,9 @@ Prerequisite technologies:
 
 If you have the above skills you will enjoy doing react.
 
-## 1. What is React ?
+## 1. What is React?
 
-React is a JavaScript library for building user interfaces. It was initially released on May 29, 2013. The current version is 16.12.0 and somehow it is stable. React was created by Facebook. It is a tool for building UI components.
+React is a JavaScript library for building user interfaces. It was initially released on May 29, 2013. The current version is 16.12.0 and somehow it is stable. React was created by Facebook. It is a tool for building UI components. When we work with react we do not interact directly with the DOM. React has its own way to handle the DOM manipulation which is the virtual DOM. Do not directly interact with DOM when you build react application leave that job for the virtual DOM.
 
 To summarize:
 
@@ -84,11 +83,11 @@ Why we choose to use react ? We use react because of the following reasons:
 
 ### Exercises
 
-1. Why chose to use react?
+1. Why you chose to use react?
 
 ## 3. JSX
 
-JSX stands for JavaScript XML. JSX allows us to write HTML elements with JavaScript code together in React. To create HTML elements in React we do not use the _createElement()_ instead we just use JSX elements.Therefore, JSX makes it easier to write and add HTML in React. JSX will be converted to JavaScript on browser using transpiler(Babel). See the JSX code below.
+JSX stands for JavaScript XML. JSX allows us to write HTML elements with JavaScript code together in React. To create HTML elements in React we do not use the _createElement()_ instead we just use JSX elements. Therefore, JSX makes it easier to write and add HTML in React. JSX will be converted to JavaScript on browser using transpiler(Babel). See the JSX code below.
 
 ```js
 const jsxElement = <h1>I am a JSX element</h1>
@@ -102,9 +101,9 @@ The above strange looking code seems a JavaScrip but not and it seems an HTML bu
 
 ## JSX Element
 
-As you have seen, JSX has a JavaScript and HTML like syntax. JSX element could be just a single HTML element or many HTML elements wrapped in a parent HTML element.
+As you have seen in the above example, JSX has a JavaScript and HTML like syntax. JSX element could be just a single HTML element or many HTML elements wrapped in a parent HTML element.
 
-This JSX element has only on HTML element which is h2.
+This JSX element has only on HTML element which is h1.
 
 ```js
 const jsxElement = <h1>I am a JSX element</h1>
@@ -116,7 +115,7 @@ Let's make more JSX elements by declaring a new variable name title and content 
 const title = <h1>Getting Started React</h1>
 ```
 
-Let us add a subtitle to the above JSX element by adding additional HTML element. Every HTML element should be wrapped by an outer HTML element to create a valid JSX element. The name title variable also should be changed to header because our JSX element is containing almost all the header information.
+Let us add a subtitle to the above JSX element by adding additional HTML element. Every HTML element should be wrapped by an outer HTML element to create a valid JSX element. The name title variable also should be changed to header because our JSX element is containing almost all the header of the application.
 
 ```js
 const header = (
@@ -145,9 +144,84 @@ As you can see the header element is a parent element for all the inner HTML ele
 ### Exercises
 
 1. What is JSX element
-2. Write some JSX?
-
+2. Write you name in JSX element and store it in name variable
+3. Write a JSX element which displays your full name, country, title, gender, email, phone number. Use h1 for the name and p for the rest of the information
+  
 ## Rendering JSX Element
+
+To render a JSX element to HTML document. We should create on index HTML. The index.html is the only HTML file you will have in any react application. Let us create an index.html file.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React For Everyone</title>
+  </head>
+
+  <body>
+    <div class="root"></div>
+
+    <script>
+  
+    </script>
+  </body>
+</html>
+```
+
+As you can see from the above index.html, we have on div with a class root and script. The root div is the get way to connect all react component to the index.html. In the script tag, we will write our JavaScript but the script type will be babel. Babel will transpile the react JSX to pure JavaScript on the browser. Let us add babel to the script.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React For Everyone</title>
+  </head>
+
+  <body>
+    <div class="root"></div>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+   // our code goes here
+    </script>
+  </body>
+</html>
+```
+
+The babel library is linked to our document and now we can make use of it. The next step is importing React and ReactDOM using CDN or link.  Attach the react and react-dom to your file. To test if react is connected to the index.html try to console.log(React). If you see an object containing react methods then you are connected to react.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React For Everyone</title>
+  </head>
+
+  <body>
+    <div class="root"></div>
+
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+      console.log(React)
+    </script>
+  </body>
+</html>
+```
+
+Now the index.html has everything we need to write react code. Let get the root element using document.querySelect('.root') and assign it to rootElement. The is only place we directly interact with DOM.
 
 Now, you knew JSX and JSX element. Lets render the JSX element on the browser, in order to do so we need the react and ReactDOM library. In addition to the React and ReactDOM we need babel to transpile the JSX to JavaScript code. The ReactDOM package has a method render. The render method takes two arguments:a JSX element or a component and the root document.
 
@@ -248,7 +322,7 @@ const main = (
     <ul>
       <li>HTML</li>
       <li>CSS</li>
-      <li> JavaScript</li>
+      <li>JavaScript</li>
     </ul>
   </main>
 )
@@ -268,6 +342,7 @@ const footer = (
 Now, we have three JSX elements:the header, main and footer. The best way to render all the three JSX element is by wrapping in a parent JSX element. To include JSX element inside another JSX element we use the {} and call the name of the JSX inside the curly bracket.
 
 ```js
+// JSX element for the header part of the website
 const header = (
   <header>
     <h1>Getting Started React</h1>
@@ -277,23 +352,26 @@ const header = (
   </header>
 )
 
+// JSX element for the main part of the website
 const main = (
   <main>
     <p>Prerequisite to get started react.js:</p>
     <ul>
       <li>HTML</li>
       <li>CSS</li>
-      <li> JavaScript</li>
+      <li>JavaScript</li>
     </ul>
   </main>
 )
 
+// JSX element for the footer part of the website
 const footer = (
   <footer>
     <p>Copyright 2020</p>
   </footer>
 )
 
+// JSX element which contain all, it is a container or parent 
 const app = (
   <div>
     {header}
@@ -359,7 +437,7 @@ Now, let us put everything together and render it to the browser.
         </footer>
       )
 
-      // JSX element, app
+      // JSX element, app, a container or a parent
       const app = (
         <div>
           {header}
@@ -382,9 +460,11 @@ Now, let us put everything together and render it to the browser.
 
 So far, we did not say anything about style in react. Now, let us add style to our JSX elements. Inline style became very popular after the emergence of react. Let us add border to the header JSX element.
 
+To add style to a JSX element we use inline style or className. We inject the style object using {}. Every CSS properties become a key and every CSS properties value become value for the key of the object.For instance, in the example below border is a key and '2px solid orange' is a value, color is a property and 'black' is a value, fontSize is a property and '18px'. All two word CSS property will change to camelCase when we use them as key in the CSS object.
+
 ```js
 const header = (
-  <header style={{ border: '2px solid orange' }}>
+  <header style={{ border: '2px solid orange', color:'black', fontSize:'18px' }}>
     <h1>Getting Started React</h1>
     <h2>JavaScript Library</h2>
     <h3>Asabeneh Yetayeh</h3>
@@ -394,7 +474,7 @@ const header = (
 
 // or we can write it
 
-const style = { border: '2px solid orange' }
+const style = { border: '2px solid orange', color:'black', fontSize:'18px' }
 
 const header = (
   <header style={style}>
@@ -412,7 +492,7 @@ Let us apply some style to our JSX elements and see the result.
 
 It is good practice to open the browser console while you are developing your application to know if everything goes well.
 
-Let us keep styling all the JSX elements we have created:the header, main and footer. We can also use regular internal styling to style our application. It is very common in the react developer community people using only classes instead of id. In this material, I will use only class instead of id.
+Let us keep styling all the JSX elements we have created: the header, main and footer. We can also use regular internal styling to style our application. Using regular style, to target an HTML element we use tag name, id, class, an attribute and other methods. It is very common in the react developer community people use quite a lot classes instead of id. In this material, I will use only class instead of id.
 
 In JSX element we write className instead of class because class is a reserved word in JavaScript. Similar to className, htmlFor instead of for in label. See the example below.
 
@@ -809,9 +889,9 @@ const main = (
 
 ### Injecting an object to JSX Element
 
-We can inject string, number, boolean, array data to JSX but we can not inject object. We should extract or destructure the content of the object before we inject the JSX element.
+We can inject string, number, boolean, array data to JSX but we can not directly inject object. We should extract object values first or destructure the content of the object before we inject to the JSX element.
 
-Now, let us put everything together. Now, the data is injected dynamically to the JSX.
+Now, let us put everything together. Here in the example below, the data is injected dynamically to the JSX.
 
 ```html
 <!DOCTYPE html>
@@ -1001,12 +1081,14 @@ Now, let us put everything together. Now, the data is injected dynamically to th
 
 ![Dynamic Data](images/dynamic_data.png)
 
-As you can see the lists are all in one line. Therefore, we should format the list the way we want in order to format the list we should modify the array before we inject it. We can modify the array using _map_.
+As you can see the lists are all in one line. Therefore, we should format the list the way we want in order to format the list we should modify the array before we inject it. We can modify the array using _map_. As a react developer you should have a very good understanding of functional programming(map, filter, reduce, find, some, every).
 
 ```js
 const techs = ['HTML', 'CSS', 'JavaScript']
 const techsFormatted = techs.map(tech => <li>{tech}</li>)
 ```
+
+In the following code example, the list is now containing list elements and formatted properly.
 
 ```html
 <!DOCTYPE html>
@@ -1194,6 +1276,8 @@ const techsFormatted = techs.map(tech => <li>{tech}</li>)
   </body>
 </html>
 ```
+
+Rendering list
 
 ![List Id](images/map_list_id.png)
 As you can see above, now the lists are formatted properly but there is warning on the console which says each list child should have a unique. In the array, we do not have id but it is common to pass id as a unique when you have id in your data. Now, let us just pass each items us a unique key and remove the warning.
@@ -1398,16 +1482,18 @@ Now, you have a very good understanding of how to create JSX element and also ho
 
 ## Component
 
-React can help us to build reusable components. The following diagram shows different components. All the components have different border colors. Have different component means we assemble them together to create an application.
+A react application is an aggregation of components. A react component is small reusable code which is responsible for one part of the application UI. React can help us to build reusable components. The following diagram shows different components. All the components have different border colors. In react we assemble different components together to create an application.
 
 Components can be:
 
-- Functional Component
-- Class Component
+- Functional Component / Presentational Component / stateless component
+- Class Component / Container Component/ State full component
+
+The above classifications of components does not work for the latest version of react but it is good to know the former definition and how the previous versions work.
 
 ![components](./images/components.png)
 
-So, let us change all the JSX we change to components. Components in react are functions which return a JSX. Component name should start with an uppercase and if the name is two word name we use CamelCase.
+So, let us change all the JSX  to components. Components in react are functions which return a JSX. Component name should start with an uppercase and if the name is two word name we use CamelCase.
 
 ```js
 // JSX element, header
@@ -1441,11 +1527,23 @@ const Header = () => {
     </header>
   )
 }
+
+// Even th above code can be written like this
+const Header = () =>  (
+    <header style={headerStyles}>
+      <div className='header-wrapper'>
+        <h1>Getting Started React</h1>
+        <h2>JavaScript Library</h2>
+        <h3>Asabeneh Yetayeh</h3>
+        <h4>Feb 10, 2020</h4>
+      </div>
+    </header>
+  )
 ```
 
-## Rendering component
+## Rendering components
 
-Now, lets change all the JSX elements we had to components. When we call JSX element we used curly brackets and when we call components we do as follows <ComponentName />.
+Now, lets change all the JSX elements we had to components. When we call JSX element we use curly brackets and when we call components we do as follows <ComponentName />.
 
 ```html
 <!DOCTYPE html>
@@ -1617,7 +1715,7 @@ Now, lets change all the JSX elements we had to components. When we call JSX ele
 
 ### Class Components
 
-All the above components are functional components. Lets make also class based component. Class based component is made using JavaScript class and it inherits from Component. Let us learn how to make a class based component by converting all the functional components we made previous. It is not important to convert all but we are converting them for the sake of learning how to functional to class component.
+All the above components are functional components. Let us make also class based component. Class based component is made using JavaScript class and it inherits from react Component. Let us learn how to make a class based component by converting all the functional components we made previously. It is not important to convert all but we are converting them for the sake of learning how to change functional components to class components.
 
 ```js
 // Header Component
@@ -1746,6 +1844,8 @@ class App extends React.Component {
   }
 }
 ```
+
+Most of the time the container or the parent component can be written as class component and others as functional or presentational components. However, the latest version of react can allow us to write every component in our application only with functional components. This was impossible in previous versions.
 
 ## Props
 
@@ -2002,6 +2102,8 @@ So far, we are using CDN. After few lesson, we will use create-react-app to crea
 
 ### defaultProps
 
+The defaultProps can be used when we want to have some default prop types for a component.
+
 ### Destructuring props
 
 Destructuring code to some extent makes easy to read. Let us destructure the props in Header component. Everything we passed a props is stored in props object. Therefore, props is an object and we can destructure the properties.
@@ -2030,7 +2132,7 @@ const Header = ({title, subtitle, authorFirstName, authorLastName, date}) => (
   <div className='header-wrapper'>
     <h1>{title}</h1>
     <h2>{subtitle}</h2>
-    <h3>{authorFirstName} {props.authorLastName}</h3>
+    <h3>{authorFirstName} {authorLastName}</h3>
     <p>{date}</p>
   </div>
 </header>
@@ -2208,6 +2310,188 @@ const Footer = ({copyRight}) => (
    <Footer copyRight = {copyRight} />
  </div>
  )
+
+// we render the JSX element using the ReactDOM package
+  ReactDOM.render(<App />, rootElement)
+    </script>
+</body>
+</html>
+```
+
+As you can see, all the variables are declared global but most of the case your data comes from the parent or container component. Let us move all the data to the parent component which is App.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+        href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500|Roboto:300,400,500&display=swap"
+        rel="stylesheet" />
+
+    <title>React For Everyone</title>
+    <style>
+        /* == General style === */
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+            line-height: 1.5;
+            font-family: 'Montserrat';
+            font-weight: 300;
+            color: black;
+        }
+
+        .root {
+            min-height: 100%;
+            position: relative;
+        }
+
+        .header-wrapper,
+        .main-wrapper,
+        .footer-wrapper {
+            width: 85%;
+            margin: auto;
+        }
+
+        .header-wrapper,
+        .main-wrapper {
+            padding: 10px;
+            margin: 2px auto;
+        }
+
+        h1 {
+            font-size: 70px;
+            font-weight: 300;
+        }
+
+        h2,
+        h3 {
+            font-weight: 300;
+        }
+
+        header {
+            background-color: #61dbfb;
+            padding: 25;
+            padding: 10px;
+        }
+
+        main {
+            padding: 10px;
+            padding-bottom: 60px;
+            /* Height of the footer */
+        }
+
+        ul {
+            margin-left: 15px;
+        }
+
+        ul li {
+            list-style: none;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 60px;
+            /* Height of the footer */
+            background: #6cf;
+        }
+
+        .footer-wrapper {
+            font-weight: 400;
+            text-align: center;
+            line-height: 60px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="root"></div>
+
+    <script
+        crossorigin
+        src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script
+        crossorigin
+        src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        // To get the root element from the HTML document
+const rootElement = document.querySelector('.root')
+// Header Component
+const Header = ({title, subtitle, authorFirstName, authorLastName, date}) => (
+<header>
+  <div className='header-wrapper'>
+    <h1>{title}</h1>
+    <h2>{subtitle}</h2>
+    <h3>{authorFirstName} {authorLastName}</h3>
+    <p>{date}</p>
+  </div>
+</header>
+)
+
+
+// TechList Component
+const TechList = ({techs}) => {
+  const techsFormatted = techs.map(tech => <li key={tech}>{tech}</li>)
+  return techsFormatted
+}
+
+// Main Component
+const Main = () => {
+    const techs = ['HTML', 'CSS', 'JavaScript']
+    return (
+  <main>
+    <div className='main-wrapper'>
+      <p>Prerequisite to get started react.js:</p>
+      <ul>
+        <TechList techs = {techs}/>
+      </ul>
+    </div>
+  </main>
+)
+}
+
+// Footer Component
+const Footer = ({copyRight}) => (
+  <footer>
+    <div className='footer-wrapper'>
+      <p>{copyRight}</p>
+    </div>
+  </footer>
+)
+
+  // The App, or the parent or the container component
+ const App = () => {
+  const title = 'Getting Started React'
+  const subtitle = 'JavaScript Library'
+  const authorFirstName = 'Asabeneh'
+  const authorLastName = 'Yetayeh'
+  const date = 'Feb 10, 2020'
+  const copyRight = 'Copyright 2020'
+
+   return (
+ <div className='app'>
+   <Header
+     title={title}
+     subtitle={subtitle}
+     authorFirstName={authorFirstName}
+     authorLastName={authorLastName}
+     date={date} />
+   <Main />
+   <Footer copyRight = {copyRight} />
+ </div>
+ )
+ }
 
 // we render the JSX element using the ReactDOM package
   ReactDOM.render(<App />, rootElement)
