@@ -2503,6 +2503,61 @@ const Footer = ({copyRight}) => (
 
 ### Rendering lists
 
+Most of the time data is in the form of array or array of objects. To render this array or array of objects most of the time we modify the data using *map*. In the previous section, we have rendered the techs list using map. In this section also we will see more examples.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+        href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500|Roboto:300,400,500&display=swap"
+        rel="stylesheet" />
+
+    <title>React For Everyone</title>
+</head>
+
+<body>
+    <div class="root"></div>
+
+    <script
+        crossorigin
+        src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script
+        crossorigin
+        src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        // To get the root element from the HTML document
+const rootElement = document.querySelector('.root')
+
+
+const App = () => {
+  const numbers = [1, 2, 3, 4, 5]
+  const skills = [['HTML', 10], ['CSS', 7], ['JavaScript', 9], ['React', 8]]
+  const counries = [{name:'Finland', city:'Helsinki'}]
+  const style = {textAlign:'center', fontSize: 85, fontFamily: 'Montserrat', display:'inline-block', marginRight:25}
+  const list = numbers.map((num) => <span key = {num} style = {style}>{num}</span>)
+  const skillsList = skills.map(([tech, level]) => <p key = {tech}> {tech} {level} </p>)
+                           return (
+                           <div>
+                             {list}
+                             <br />
+                             {skillsList}
+                           </div>
+                           )
+      }
+
+  ReactDOM.render(<App />, rootElement)
+    </script>
+</body>
+
+</html>
+```
+
+
 ## Events
 
 ## State
