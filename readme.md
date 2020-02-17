@@ -2503,7 +2503,9 @@ const Footer = ({copyRight}) => (
 
 ### Rendering lists
 
-Most of the time data is in the form of array or array of objects. To render this array or array of objects most of the time we modify the data using *map*. In the previous section, we have rendered the techs list using map. In this section also we will see more examples.
+Most of the time data is in the form of array or array of objects. To render this array or array of objects most of the time we modify the data using *map*. In the previous section, we have rendered the techs list using map. In this section also we will see more examples. 
+
+In the following example, you will see how we render a number array, a countries array and skills array on the browser.
 
 ```html
 <!DOCTYPE html>
@@ -2515,8 +2517,16 @@ Most of the time data is in the form of array or array of objects. To render thi
     <link
         href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500|Roboto:300,400,500&display=swap"
         rel="stylesheet" />
-
     <title>React For Everyone</title>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Montserrat';
+        }
+    </style>
 </head>
 
 <body>
@@ -2537,15 +2547,28 @@ const rootElement = document.querySelector('.root')
 const App = () => {
   const numbers = [1, 2, 3, 4, 5]
   const skills = [['HTML', 10], ['CSS', 7], ['JavaScript', 9], ['React', 8]]
-  const counries = [{name:'Finland', city:'Helsinki'}]
-  const style = {textAlign:'center', fontSize: 85, fontFamily: 'Montserrat', display:'inline-block', marginRight:25}
-  const list = numbers.map((num) => <span key = {num} style = {style}>{num}</span>)
-  const skillsList = skills.map(([tech, level]) => <p key = {tech}> {tech} {level} </p>)
+  const countries = [{name:'Finland', city:'Helsinki'},{name:'Sweden', city:'Stockholm'}, {name:'Denmark', city:'Copenhagen'}, {name:'Norway', city:'Oslo'}]
+ 
+  const list = numbers.map((num) => <p key = {num}>{num}</p>)
+
+  const countryList = countries.map(({name, city}) => <div><p>{name} {city} </p> </div>)
+  
+  const skillsList = skills.map(([tech, level]) => <p key = {tech}> {tech} {' '}
+       {level} </p>)
                            return (
-                           <div>
-                             {list}
-                             <br />
-                             {skillsList}
+                           <div className = 'container'>
+                               <div>
+                                   <h1>Numbers List</h1>
+                                     {list}
+                               </div>
+                               <div>
+                                   <h1>Technologies List</h1>
+                                    {skillsList}
+                               </div>
+                               <div>
+                                   <h1>Countries List</h1>
+                                   {countryList}
+                               </div>
                            </div>
                            )
       }
@@ -2556,6 +2579,7 @@ const App = () => {
 
 </html>
 ```
+![Rendering list](images/rendering_list.png)
 
 
 ## Events
