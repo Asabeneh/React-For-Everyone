@@ -1,10 +1,8 @@
 # React For Everyone
-
-![React Logo](images/react_logo.gif)
-
+![React banner](images/react_for_everyone.png)
 - [React For Everyone](#react-for-everyone)
   - [Introduction](#introduction)
-  - [1. What is React?](#1-what-is-react)
+  - [1. What is React ?](#1-what-is-react)
     - [Exercises](#exercises)
   - [2. Why React ?](#2-why-react)
     - [Exercises](#exercises-1)
@@ -14,6 +12,8 @@
     - [Exercises](#exercises-3)
   - [Rendering JSX Element](#rendering-jsx-element)
   - [Style and className](#style-and-classname)
+      - [Exercises](#exercises-4)
+      - [Exercises](#exercises-5)
   - [Injecting data to JSX Element](#injecting-data-to-jsx-element)
     - [Injecting a string to JSX Element](#injecting-a-string-to-jsx-element)
     - [Injecting a number to JSX Element](#injecting-a-number-to-jsx-element)
@@ -51,7 +51,7 @@ Prerequisite to get started with React. You should have a good understanding of 
 
 If you have the above skills you will enjoy doing react.
 
-## 1. What is React?
+## 1. What is React ?
 
 React is a JavaScript library for building user interfaces. It was initially released on May 29, 2013. The current version is 16.12.0 and somehow it is stable. React was created by Facebook. It is a tool for building UI components. When we work with react we do not interact directly with the DOM. React has its own way to handle the DOM manipulation which is the virtual DOM. Do not directly interact with DOM when you build react application leave that job for the virtual DOM.
 
@@ -87,13 +87,13 @@ Why we choose to use react ? We use react because of the following reasons:
 
 ## 3. JSX
 
-JSX stands for JavaScript XML. JSX allows us to write HTML elements with JavaScript code together in React. To create HTML elements in React we do not use the _createElement()_ instead we just use JSX elements. Therefore, JSX makes it easier to write and add HTML in React. JSX will be converted to JavaScript on browser using transpiler(Babel). See the JSX code below.
+JSX stands for JavaScript XML. JSX allows us to write HTML elements with JavaScript code. To create HTML elements in React we do not use the _createElement()_ instead we just use JSX elements. Therefore, JSX makes it easier to write and add HTML elements in React. JSX will be converted to JavaScript on browser using transpiler which [babel.js](https://babeljs.io/). See the JSX code below.
 
 ```js
 const jsxElement = <h1>I am a JSX element</h1>
 ```
 
-The above strange looking code seems a JavaScrip but not and it seems an HTML but not completely an HTML element. It is a mix of JavaScript and and HTML element. JSX can allow us to use HTML in JavaScript
+The above strange looking code seems a JavaScrip but not and it seems an HTML but not completely an HTML element. It is a mix of JavaScript and and an HTML element. JSX can allow us to use HTML in JavaScript. The HTML element in the above JSX is h1.
 
 ### Exercises
 
@@ -144,12 +144,12 @@ As you can see the header element is a parent element for all the inner HTML ele
 ### Exercises
 
 1. What is JSX element
-2. Write you name in JSX element and store it in name variable
-3. Write a JSX element which displays your full name, country, title, gender, email, phone number. Use h1 for the name and p for the rest of the information
+2. Write you name in JSX element and store it in a name variable
+3. Write a JSX element which displays your full name, country, title, gender, email, phone number. Use h1 for the name and p for the rest of the information and store it in a user variable.
   
 ## Rendering JSX Element
 
-To render a JSX element to HTML document. We should create on index HTML. The index.html is the only HTML file you will have in any react application. Let us create an index.html file.
+To render a JSX element to HTML document. We should create on index HTML. The index.html is the only HTML file you will have in any react application. That is why every react application is a single page application. Let us create an index.html file.
 
 ```html
 <!DOCTYPE html>
@@ -170,7 +170,7 @@ To render a JSX element to HTML document. We should create on index HTML. The in
 </html>
 ```
 
-As you can see from the above index.html, we have on div with a class root and script. The root div is the get way to connect all react component to the index.html. In the script tag, we will write our JavaScript but the script type will be babel. Babel will transpile the react JSX to pure JavaScript on the browser. Let us add babel to the script.
+As you can see from the above index.html, we have on div with a class root and script. The root div is the get way to connect all react component to the index.html. In the script tag, we will write our JavaScript but the script type will be babel. Babel will transpile the react JSX to pure JavaScript on the browser. Let us add babel library to the script. Inside the babel, we can write any pure JavaScript, JSX and in general react code.
 
 ```html
 <!DOCTYPE html>
@@ -221,9 +221,9 @@ The babel library is linked to our document and now we can make use of it. The n
 </html>
 ```
 
-Now the index.html has everything we need to write react code. Let get the root element using document.querySelect('.root') and assign it to rootElement. The is only place we directly interact with DOM.
+Now the index.html has everything we need to write react code. Let us get the root element using document.querySelect('.root') and assign it to variable name rootElement. The is only place we directly interact with DOM.
 
-Now, you knew JSX and JSX element. Lets render the JSX element on the browser, in order to do so we need the react and ReactDOM library. In addition to the React and ReactDOM we need babel to transpile the JSX to JavaScript code. The ReactDOM package has a method render. The render method takes two arguments:a JSX element or a component and the root document.
+Now, you knew JSX and JSX element. Let us render the JSX element on the browser, in order to do so we need the react and ReactDOM library. In addition to the React and ReactDOM we need babel to transpile the JSX to JavaScript code. The ReactDOM package has a method render. The render method takes two arguments:a JSX element or a component and the root document. See the code below.
 
 ```html
 <!DOCTYPE html>
@@ -310,7 +310,7 @@ Let us render more content. To render more content the JSX element should have m
 
 ![Rendering more content](images/rendering_more_content.png)
 
-We have created a JSX element for the header of our website. How about the main and the footer for the website? Similar to the header, let us create a JSX element for the main and the footer.
+We have created a JSX element for the header of the website. How about the main and the footer for the website? Similar to the header, let us create a JSX element for the main and the footer.
 
 JSX element for the main part of the website.
 
@@ -339,7 +339,7 @@ const footer = (
 )
 ```
 
-Now, we have three JSX elements:the header, main and footer. The best way to render all the three JSX element is by wrapping in a parent JSX element. To include JSX element inside another JSX element we use the {} and call the name of the JSX inside the curly bracket.
+Now, we have three JSX elements:the header, main and footer. The best way to render all the three JSX elements is by wrapping them all in a parent JSX element. To include JSX element inside another JSX element we use the curly bracket, {} and call the name of the JSX inside the curly bracket.
 
 ```js
 // JSX element for the header part of the website
@@ -460,7 +460,7 @@ Now, let us put everything together and render it to the browser.
 
 So far, we did not say anything about style in react. Now, let us add style to our JSX elements. Inline style became very popular after the emergence of react. Let us add border to the header JSX element.
 
-To add style to a JSX element we use inline style or className. We inject the style object using {}. Every CSS properties become a key and every CSS properties value become value for the key of the object.For instance, in the example below border is a key and '2px solid orange' is a value, color is a property and 'black' is a value, fontSize is a property and '18px'. All two word CSS property will change to camelCase when we use them as key in the CSS object.
+To add style to a JSX element we use inline style or className. We inject the style object using {}. Every CSS properties become a key and every CSS properties value become value for the  the object. For instance, in the example below border is a key and '2px solid orange' is a value, color is a key and 'black' is a value, fontSize is a key and '18px' is a value. All two word CSS property will change to camelCase when we use them as key in the CSS object.
 
 ```js
 const header = (
@@ -494,7 +494,7 @@ It is good practice to open the browser console while you are developing your ap
 
 Let us keep styling all the JSX elements we have created: the header, main and footer. We can also use regular internal styling to style our application. Using regular style, to target an HTML element we use tag name, id, class, an attribute and other methods. It is very common in the react developer community people use quite a lot classes instead of id. In this material, I will use only class instead of id.
 
-In JSX element we write className instead of class because class is a reserved word in JavaScript. Similar to className, htmlFor instead of for in label. See the example below.
+In JSX element we write className instead of class because class is a reserved word in JavaScript. Similar to className, htmlFor instead of for in label tag. See the example below.
 
 ```js
 const title = <h1 className='title'>Getting Started React</h1>
@@ -521,27 +521,6 @@ Now, you know how to use the inline style and how to use className and let us st
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>React For Everyone</title>
-    <style>
-      * {
-        box-sizing: border-box;
-        padding: 0;
-        margin: 0;
-      }
-
-      html,
-      body {
-        margin: 0;
-        padding: 0;
-        height: 100%;
-        line-height: 1.5;
-        font-family: 'Lato';
-      }
-
-      .root {
-        min-height: 100%;
-        position: relative;
-      }
-    </style>
   </head>
 
   <body>
@@ -623,7 +602,12 @@ Now, you know how to use the inline style and how to use className and let us st
 
 ![Styling all jsx elements](images/styling_all_jsx_elements.png)
 
-Instead of style object using regular styling method is more easier than the above. Now, let us use internal style or external style method to style all the JSX elements.
+#### Exercises
+
+1. Create a style object for the main JSX
+2. Create a style object for the footer and app JSX
+
+Instead of style object using regular styling method is more easier than the above. Now, let us use internal style to style all the JSX. It is also possible to use external style method.
 
 ```html
 <!DOCTYPE html>
@@ -794,6 +778,10 @@ Instead of style object using regular styling method is more easier than the abo
 
 ![Internal Style](./images/internal_style.png)
 
+#### Exercises
+
+1. Apply different styles to you JSX elements
+
 ## Injecting data to JSX Element
 
 So far, we used static data on the JSX elements but we also pass different data types as a dynamic data. The dynamic data could be string, number, boolean, array or object. Let us see each of the data types step by step. To inject data to a JSX we use the {} bracket.
@@ -865,7 +853,7 @@ As you can see in the above example, it is possible to do some arithmetic calcul
 
 ### Injecting an array to JSX Element
 
-To give example for an array, let change the HTML, CSS, JavaScript an array.
+To give example for an array, let us change the HTML, CSS, JavaScript an array and inject it to the main JSX element below.
 
 ```js
 const techs = ['HTML', 'CSS', 'JavaScript']
@@ -1081,7 +1069,7 @@ Now, let us put everything together. Here in the example below, the data is inje
 
 ![Dynamic Data](images/dynamic_data.png)
 
-As you can see the lists are all in one line. Therefore, we should format the list the way we want in order to format the list we should modify the array before we inject it. We can modify the array using _map_. As a react developer you should have a very good understanding of functional programming(map, filter, reduce, find, some, every).
+As you can see the lists are all in one line. Therefore, we should format the list the way we wan. In order to format the list we should modify the array before we inject it to JSX. We can modify the array using _map_. As a react developer you should have a very good understanding of functional programming(map, filter, reduce, find, some, every).
 
 ```js
 const techs = ['HTML', 'CSS', 'JavaScript']
