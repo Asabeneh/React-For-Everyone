@@ -2986,11 +2986,11 @@ When you run the application using npm start react will start and you will see t
 
 ![launched](images/cleaned_launched.png)
 
-Now, lets create Header.js, Main.js, Footer.js component inside the components directory. And all the CSS to App.css. Finally, you will get this. You will get the code on [first-react-app](https://github.com/Asabeneh/React-For-Everyone/tree/master/first-react-app) folder.
+Now, lets create Header.js, Main.js, Footer.js component inside the components directory and move all the components we created in the previous section to their corresponding component file. And all the CSS to App.css fille. Finally, you will get this. You will get the code on [first-react-app](https://github.com/Asabeneh/React-For-Everyone/tree/master/first-react-app) folder.
 
 ![First react app](images/first_react_app.png)
 
-We developed a very simple react application but this application can be changed to a portfolio or a blog. Let us change to blog. Let us call the name of the react project, blog. Let make use of the code we did on the first-react-app folder.
+We developed a very simple react application but this application can be changed to a portfolio or a blog. Let us change to a small blog. Let us call the name of the react project, blog. Let make use of the code we did on the first-react-app folder.
 
 ## Events
 
