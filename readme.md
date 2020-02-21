@@ -23,10 +23,13 @@
 - [Rendering components](#rendering-components)
   - [Class Components](#class-components)
 - [Props](#props)
-  - [propTypes](#proptypes)
-  - [defaultProps](#defaultprops)
-  - [Destructuring props](#destructuring-props)
+  - [Props in Functional Component](#props-in-functional-component)
+    - [propTypes](#proptypes)
+    - [defaultProps](#defaultprops)
+    - [Destructuring props](#destructuring-props)
+  - [Props in Class Components](#props-in-class-components)
   - [Rendering lists](#rendering-lists)
+- [Creating a react project](#creating-a-react-project)
 - [Events](#events)
 - [State](#state)
 - [Class Component and Functional Component](#class-component-and-functional-component)
@@ -78,7 +81,13 @@ To summarize:
 
 React is one of the most popular JavaScript library. Many developers and companies have been using it for the last couple of years. Its popularity has been growing fast and it has a huge community. How do we measure popularity? One measure of could be github, let us compare the popularity of [react](https://github.com/facebook/react) and [vue](https://github.com/vuejs/vue). As of today, the popularity between the two most popular JavaScript looks like as follows. From the diagram you can tell yourself which is more popular, I will leave this for you.
 
-![React Populary](images/react_popularity.png) ![Vue Popularity](images/vue_popularity.png)
+React Official Github Repository
+
+![React Populary](images/react_popularity.png) 
+
+Vue Official Github Repository
+
+![Vue Popularity](images/vue_popularity.png)
 
 Why we choose to use react ? We use react because of the following reasons:
 
@@ -1898,6 +1907,8 @@ Most of the time the container or the parent component can be written as class c
 
 ## Props
 
+### Props in Functional Component
+
 In the previous section, we saw how to inject dynamic data type JSX. Now, let us see how we use dynamic data in component and also how to pass data as props.
 
 ```js
@@ -2150,15 +2161,15 @@ As you can see in the above code, the data passed as props to Header component.
 </html>
 ```
 
-### propTypes
+#### propTypes
 
 So far, we are using CDN. After few lesson, we will use create-react-app to create a react project and we will start using importing packages instead of CDN. We will cover propTypes and defaultProps when we start create-react-app.
 
-### defaultProps
+#### defaultProps
 
 The defaultProps can be used when we want to have some default prop types for a component.
 
-### Destructuring props
+#### Destructuring props
 
 Destructuring code to some extent makes easy to read. Let us destructure the props in Header component. Everything we passed a props is stored in props object. Therefore, props is an object and we can destructure the properties.
 
@@ -2557,6 +2568,211 @@ const Footer = ({copyRight}) => (
 </html>
 ```
 
+### Props in Class Components
+
+We access the props object in class full components using the word *this*. [Live on code pen](https://codepen.io/Asabeneh/full/poJNjjV)
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+        href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500|Roboto:300,400,500&display=swap"
+        rel="stylesheet" />
+
+    <title>React For Everyone</title>
+    <style>
+        /* == General style === */
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+            line-height: 1.5;
+            font-family: 'Montserrat';
+            font-weight: 300;
+            color: black;
+        }
+
+        .root {
+            min-height: 100%;
+            position: relative;
+        }
+
+        .header-wrapper,
+        .main-wrapper,
+        .footer-wrapper {
+            width: 85%;
+            margin: auto;
+        }
+
+        .header-wrapper,
+        .main-wrapper {
+            padding: 10px;
+            margin: 2px auto;
+        }
+
+        h1 {
+            font-size: 70px;
+            font-weight: 300;
+        }
+
+        h2,
+        h3 {
+            font-weight: 300;
+        }
+
+        header {
+            background-color: #61dbfb;
+            padding: 25;
+            padding: 10px;
+        }
+
+        main {
+            padding: 10px;
+            padding-bottom: 60px;
+            /* Height of the footer */
+        }
+
+        ul {
+            margin-left: 15px;
+        }
+
+        ul li {
+            list-style: none;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 60px;
+            /* Height of the footer */
+            background: #6cf;
+        }
+
+        .footer-wrapper {
+            font-weight: 400;
+            text-align: center;
+            line-height: 60px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="root"></div>
+
+    <script
+        crossorigin
+        src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script
+        crossorigin
+        src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        // To get the root element from the HTML document
+const rootElement = document.querySelector('.root')
+// Header Component
+class Header  extends React.Component {
+  render () {
+    const {title, subtitle, author, date} = this.props
+    return (
+<header>
+  <div className='header-wrapper'>
+    <h1>{title}</h1>
+    <h2>{subtitle}</h2>
+    <p>{author.firstName} {author.lastName}</p>
+    <p>{date}</p>
+  </div>
+</header>
+)
+  }
+}
+
+
+// TechList Component
+class TechList extends React.Component {
+  render () {
+    const techsFormatted = this.props.techs.map(tech => <li key={tech}>{tech}</li>)
+  return techsFormatted
+  }
+  
+}
+
+// Main Component
+class Main extends React.Component {
+  render () {
+    const {techs} = this.props
+  return (
+  <main>
+    <div className='main-wrapper'>
+      <p>Prerequisite to get started react.js:</p>
+      <ul>
+        <TechList techs = {techs}/>
+      </ul>
+    </div>
+  </main>
+)
+  }
+}
+
+// Footer Component
+class Footer extends React.Component {
+  render () {
+    const copyRight = this.props
+    return (
+  <footer>
+    <div className='footer-wrapper'>
+      <p>{copyRight}</p>
+    </div>
+  </footer>
+)
+  }
+}
+
+  // The App, or the parent or the container component
+ class App extends React.Component{
+   render () {
+      const title = 'Getting Started React'
+      const subtitle = 'JavaScript Library'
+      const author = {
+      firstName: 'Asabeneh',
+      lastName: 'Yetayeh'
+      }
+      const date = 'Feb 10, 2020'
+      const copyRight = 'Copyright 2020'
+      const techs = ['HTML', 'CSS', 'JavaScript']
+
+   return (
+ <div className='app'>
+   <Header
+     title={title}
+     subtitle={subtitle}
+     author={author}
+     date={date} />
+   <Main techs = {techs}/>
+   <Footer copyRight = {copyRight} />
+ </div>
+ )
+   }
+  
+ }
+
+// we render the JSX element using the ReactDOM package
+  ReactDOM.render(<App />, rootElement)
+    </script>
+</body>
+
+</html>
+```
+
 ### Rendering lists
 
 Most of the time data is in the form of array or array of objects. To render this array or array of objects most of the time we modify the data using *map*. In the previous section, we have rendered the techs list using map. In this section also we will also see more examples.
@@ -2701,6 +2917,79 @@ const App = () => {
 
 ![Rendering list](images/rendering_list.png)
 
+After this, we will use the *create-react-app* package to start a react project. The *create-react-app* is the standard way to create your react project.
+
+By now you should be familiar with:
+
+- JSX
+- JSX Element
+- Injected Dynamic data to JSX
+- Babel
+- React Component
+- Props
+- Passing props to components
+- Rendering list
+- Functional Component
+- Class Based Component
+
+## Creating a react project
+
+From now, on we use the *create-react-app* to create react project.
+First check if you have node on your machine by typing *node* on your terminal or windows command prompt.  
+
+```sh
+asabeneh $ node -v
+v12.14.0
+```
+
+To create the react project you go to any directory you want your project to be and then type the following:
+
+```sh
+asabeneh $ nxp create-react-app name-of-your-project
+```
+
+After the project is created, write the following command
+
+```sh
+asabeneh $ nxp create-react-app name-of-your-project
+asabeneh $ npm start
+```
+
+In other way, you can use just create-react-app followed by name of a project by installing create-react-app globally
+
+```sh
+asabeneh $ npm install create-react-app -g
+asabeneh $ create-react-app name-of-your-project
+asabeneh $ cd  name-of-your-project
+asabeneh $ npm start
+```
+
+Now, let create a react project name react-for-everyone
+
+```sh
+asabeneh $ npx create-react-app first-react-app
+asabeneh $ cd  first-react-app
+asabeneh $ npm start
+```
+
+Now, your application is running at port 3000.
+
+Let us open the file on vscode and let us the files and directories.
+
+![Create create app files](images/create_react_app_files.png)
+
+Let us remove the unnecessary files, after removing you will left with following structure
+![Cleaned files](images/create_react_app_file_cleaned.png)
+
+When you run the application using npm start react will start and you will see this you will get the structure in the *react-starter* folder.
+
+![launched](images/cleaned_launched.png)
+
+Now, lets create Header.js, Main.js, Footer.js component inside the components directory. And all the CSS to App.css. Finally, you will get this. You will get the code on first-react-app folder.
+
+![First react app](images/first_react_app.png)
+
+We developed a very simple react application but this application can be changed to a portfolio or a blog. Let us change to blog. The name of the blog is going to be CodingForAll.
 
 ## Events
 
