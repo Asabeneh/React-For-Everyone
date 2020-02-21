@@ -2978,18 +2978,19 @@ Let us open the file on vscode and let us the files and directories.
 
 ![Create create app files](images/create_react_app_files.png)
 
-Let us remove the unnecessary files, after removing you will left with following structure
+Let us remove the unnecessary files and create components directory, after removing you will left with following structure. All the components goes to the components folder.
+
 ![Cleaned files](images/create_react_app_file_cleaned.png)
 
-When you run the application using npm start react will start and you will see this you will get the structure in the *react-starter* folder.
+When you run the application using npm start react will start and you will see this you will get the structure in the [*react-starter*](https://github.com/Asabeneh/React-For-Everyone/tree/master/react-starter) folder.
 
 ![launched](images/cleaned_launched.png)
 
-Now, lets create Header.js, Main.js, Footer.js component inside the components directory. And all the CSS to App.css. Finally, you will get this. You will get the code on first-react-app folder.
+Now, lets create Header.js, Main.js, Footer.js component inside the components directory. And all the CSS to App.css. Finally, you will get this. You will get the code on [first-react-app](https://github.com/Asabeneh/React-For-Everyone/tree/master/first-react-app) folder.
 
 ![First react app](images/first_react_app.png)
 
-We developed a very simple react application but this application can be changed to a portfolio or a blog. Let us change to blog. The name of the blog is going to be CodingForAll.
+We developed a very simple react application but this application can be changed to a portfolio or a blog. Let us change to blog. Let us call the name of the react project, blog. Let make use of the code we did on the first-react-app folder.
 
 ## Events
 
