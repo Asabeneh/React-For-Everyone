@@ -32,6 +32,7 @@
 - [Creating a react project](#creating-a-react-project)
 - [Events](#events)
 - [State](#state)
+- [Forms](#forms)
 - [Class Component and Functional Component](#class-component-and-functional-component)
 - [Container and Presentation component](#container-and-presentation-component)
 - [React Form](#react-form)
@@ -2994,8 +2995,236 @@ We developed a very simple react application but this application can be changed
 
 ## Events
 
+Let us talk about events. Let see first the most common HTML element events:
+     - onclick
+     - ondblclick
+     - onmouseenter
+     - onmousemove
+     - onhover
+     - onkeyup
+     - onkeydown
+     - onkeypress
+     - oninput
+     - onblur
+     - onfocus
+     - onchange
+
+In react, we can use the same events a bit differently. The HTML events will be camel case in react that means onclick will be onClick and we use the curly bracket to call the function inside the event handler.
+
+```js
+const  App = () =>  {
+  return (
+    <div className='App'>
+      <button onClick={() => alert('I am clicked')}>Click me</button>
+    </div>
+  )
+}
+```
+
+Now, you attached a click event listener to the button and it should pop up an alert message. It is common to write the function outside the curly bracket. Let us take out and write it outside.
+
+```js
+const  App = () =>  {
+  const doSomething = () => {
+    alert('You clicked me. Of course, I am doing something')
+  }
+  return (
+    <div className='App'>
+      <button onClick={doSomething}>Click me</button>
+    </div>
+  )
+}
+```
+
+How about if the component is a class based component ? Lets change the above functional component and add event to the button.
+
+We need the *this* key word to bind the *doSomething* method to the component and the method should be an arrow function to avoid unnecessary steps of bind..
+
+```js
+class App extends React.Component {
+  doSomething = () => {
+    alert('You clicked me. Of course, I am doing something')
+  }
+  render() {
+    return (
+      <div className='App'>
+        <Header />
+        <button onClick={this.doSomething}>Click me</button>
+      </div>
+    )
+  }
+}
+```
+
+Well done, now you know how to handle event in react and let move on to state. We will cover more events with state.
+
+With react hooks a functional component can have a state but if we do not react hooks we get state only from class components. We will learn about react hooks in the later section.
+
 ## State
 
+What is state ? The English meaning of state is *the particular condition that someone or something is in at a specific time*.
+
+Let us see some states being something
+     - Are you happy or sad?
+     - Is light on or off ? Is present or absent ?
+     - Is full or empty ?
+
+State is an object in react which let the component re-render when data changes. We do not directly change or mutate the state but we use the *setState()* method. As you can see below in the state object we have count with initial value 0.  We can access the state object using *this.state* and the property name. See the example below.
+
+```js
+class App extends React.Component {
+  // declaring state
+  state = {
+    count: 0
+  }
+  render() {
+    // accessing the state value
+    const count = this.state.count
+    return (
+      <div className='App'>
+        <h1>{count} </h1>
+      </div>
+    )
+  }
+}
+```
+
+Now, let add some methods which increase or decrease the value of count by clicking a button. Let us add a button to increase and a button to decrease the value of count. To set the state we use react method *this.setState*. See the example below
+
+```js
+class App extends React.Component {
+  // declaring state
+  state = {
+    count: 0
+  }
+  render() {
+    // accessing the state value
+    const count = this.state.count
+    return (
+      <div className='App'>
+        <h1>{count} </h1>
+        <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+          Add One
+        </button>
+      </div>
+    )
+  }
+}
+```
+
+If you understand the above example, adding minus one will be easy. Let us add the minus one event.
+
+```js
+class App extends React.Component {
+  // declaring state
+  state = {
+    count: 0
+  }
+  render() {
+    // accessing the state value
+    const count = this.state.count
+    return (
+      <div className='App'>
+        <h1>{count} </h1>
+
+        <div>
+          <button
+            onClick={() => this.setState({ count: this.state.count + 1 })}
+          >
+            Add One
+          </button>{' '}
+          <button
+            onClick={() => this.setState({ count: this.state.count - 1 })}
+          >
+            Minus One
+          </button>
+        </div>
+      </div>
+    )
+  }
+}
+```
+
+Both button work well, but we need to re-structure the code well. Let us create separate methods in component. 
+If you want to see it live check it [here][https://codepen.io/Asabeneh/full/JjdWYom]
+
+```js
+class App extends React.Component {
+  // declaring state
+  state = {
+    count: 0
+  }
+  // method which add one to the state
+
+  addOne = () => {
+    this.setState({ count: this.state.count + 1 })
+  }
+
+  // method which subtract one to the state
+  minusOne = () => {
+    this.setState({ count: this.state.count - 1 })
+  }
+  render() {
+    // accessing the state value
+    const count = this.state.count
+    return (
+      <div className='App'>
+        <h1>{count} </h1>
+
+        <div>
+          <button className='btn btn-add' onClick={this.addOne}>
+            +1
+          </button>{' '}
+          <button className='btn btn-minus' onClick={this.minusOne}>
+            -1
+          </button>
+        </div>
+      </div>
+    )
+  }
+}
+```
+
+Let us do more example about state, in the following example we will develop small application which shows either a dog or cat.
+We can start by setting the initial state with cat then when it is clicked it will show dog and alternatively. We need one method which changes the animal alternatively. See the code below. If you want to see live click [here](https://codepen.io/Asabeneh/full/LYVxKpq).
+
+```js
+class App extends React.Component {
+  // declaring state
+  state = {
+    image: 'https://www.smithsstationah.com/imagebank/eVetSites/Feline/01.jpg'
+  }
+  changeAnimal = () => {
+    let dogURL =
+      'https://static.onecms.io/wp-content/uploads/sites/12/2015/04/dogs-pembroke-welsh-corgi-400x400.jpg'
+    let catURL =
+      'https://www.smithsstationah.com/imagebank/eVetSites/Feline/01.jpg'
+    let image = this.state.image === catURL ? dogURL : catURL
+    this.setState({ image })
+  }
+
+  render() {
+    // accessing the state value
+    const count = this.state.count
+    return (
+      <div className='App'>
+        <h1>React for Everyone</h1>
+        <div className='animal'>
+          <img src={this.state.image} alt='animal' />
+        </div>
+
+        <button onClick={this.changeAnimal} class='btn btn-add'>
+          Change
+        </button>
+      </div>
+    )
+  }
+}
+```
+
+I believe now you have a very good understanding of state. After this, we will use state in other sections too because state and props is the core of a react application.
+
+## Forms
 ## Class Component and Functional Component
 
 ## Container and Presentation component
