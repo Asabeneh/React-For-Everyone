@@ -32,6 +32,7 @@
 - [Creating a react project](#creating-a-react-project)
 - [Events](#events)
 - [State](#state)
+- [Controlled input](#controlled-input)
 - [Forms](#forms)
 - [Class Component and Functional Component](#class-component-and-functional-component)
 - [Container and Presentation component](#container-and-presentation-component)
@@ -3224,7 +3225,128 @@ class App extends React.Component {
 
 I believe now you have a very good understanding of state. After this, we will use state in other sections too because state and props is the core of a react application.
 
+## Controlled input
+
+So far we did not get any data from input field. Now, it is time to learn how to get data from an input field. We need on input field, event listener (onChange) and state to get data from a controlled input. See the example below. The h1 element below the input tag display what we write on the input. Check live [demo](https://codepen.io/Asabeneh/full/OJVpyqm)
+
+```js
+class App extends React.Component {
+  // declaring state
+  // initial state
+  state = {
+    firstName: ''
+  }
+  handleChange = e => {
+    const value = e.target.value
+    this.setState({ firstName: value })
+  }
+
+  render() {
+    // accessing the state value and this value will injected to the input in the value attribute
+    const firstName = this.state.firstName
+    return (
+      <div className='App'>
+        <input
+          type='text'
+          name='firstName'
+          placeholder='First Name'
+          value={firstName}
+          onChange={this.handleChange}
+        />
+        <h1>{this.state.firstName}</h1>
+      </div>
+    )
+  }
+}
+```
+
+We usually use form to handle use information. Let us move to form section and make use the form element.
+
 ## Forms
+
+Form is used to collect data from user. In this section we will develop a small form which collect user information. Our user is a student. We use a parent form element and certain number of input elements to collect user information. In addition to that we will have event listener for the form (onSubmit) and for the inputs (onChange). See the following example try to see the commonts too. You can also check the live [demo](https://codepen.io/Asabeneh/full/eYNvJda).
+
+```js
+class App extends React.Component {
+  // declaring state
+  state = {
+    firstName: '',
+    lastName: '',
+    country: '',
+    title: ''
+  }
+  handleChange = e => {
+    /*
+    // we can get the name and value like this but we can also destructure it from e.target
+    const name = e.target.name
+    const value = e.target.value
+    */
+    const { name, value } = e.target
+    // [variablename] this we can make a value stored in a certain variable could be a key for an object, in this case a key for the state
+    this.setState({ [name]: value })
+  }
+  handleSubmit = e => {
+    // stops the default behavior of form element specifically refreshing of page
+    e.preventDefault()
+    console.log(this.state)
+  }
+
+  render() {
+    // accessing the state value by destrutcturing the state
+    const { firstName, lastName, title, country } = this.state
+    return (
+      <div className='App'>
+        <h3>Add Student</h3>
+        <form onSubmit={this.handleSubmit}>
+          <div>
+            <input
+              type='text'
+              name='firstName'
+              placeholder='First Name'
+              value={firstName}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div>
+            <input
+              type='text'
+              name='lastName'
+              placeholder='Last Name'
+              value={lastName}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div>
+            <input
+              type='text'
+              name='country'
+              placeholder='Country'
+              value={country}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div>
+            <input
+              type='text'
+              name='title'
+              placeholder='Title'
+              value={title}
+              onChange={this.handleChange}
+            />
+          </div>
+
+          <button onClick={this.changeAnimal} class='btn btn-success'>
+            Submit
+          </button>
+        </form>
+      </div>
+    )
+  }
+}
+```
+
+
+
 ## Class Component and Functional Component
 
 ## Container and Presentation component
