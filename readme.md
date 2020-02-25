@@ -2982,7 +2982,7 @@ Let us remove the unnecessary files and create components directory, after remov
 
 ![Cleaned files](images/create_react_app_file_cleaned.png)
 
-When you run the application using npm start react will start and you will see this you will get the structure in the [*react-starter*](https://github.com/Asabeneh/React-For-Everyone/tree/master/react-starter) folder.
+First modify the App.js file and run the application using npm start will launch the app on the browser. You will get the folder structure in the [*react-starter*](https://github.com/Asabeneh/React-For-Everyone/tree/master/react-starter) folder.
 
 ![launched](images/cleaned_launched.png)
 
@@ -2990,7 +2990,7 @@ Now, lets create Header.js, Main.js, Footer.js component inside the components d
 
 ![First react app](images/first_react_app.png)
 
-We developed a very simple react application but this application can be changed to a portfolio or a blog. Let us change to a small blog. Let us call the name of the react project, blog. Let make use of the code we did on the first-react-app folder.
+We developed a very simple react application but this application can be changed to a portfolio or a blog.
 
 ## Events
 
