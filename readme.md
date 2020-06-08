@@ -1,8 +1,11 @@
 
 ![React banner](images/react_for_everyone.png)
-<small>Support Asabeneh to create more educational materials</small>
+<div>
 
-[<img src = './images/become_patreon.png' alt='become-asabeneh-patreon' title='click' />](https://www.patreon.com/asabeneh?fan_landing=true)  
+<small>Support [**Asabeneh**](https://www.patreon.com/asabeneh?fan_landing=true) to create more educational materials</small>  
+[<img src = './images/become_patreon.png' alt='become-asabeneh-patreon' title='click' />](https://www.patreon.com/asabeneh?fan_landing=true) 
+</div>
+
 - [Introduction](#introduction)
 - [1. What is React ?](#1-what-is-react-)
   - [Exercises](#exercises)
