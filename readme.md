@@ -1,9 +1,12 @@
 
 ![React banner](images/react_for_everyone.png)
+<small>Support Asabeneh to create more educational materials</small>
+
+[<img src = './images/become_patreon.png' alt='become-asabeneh-patreon' title='click' />](https://www.patreon.com/asabeneh?fan_landing=true)  
 - [Introduction](#introduction)
-- [1. What is React ?](#1-what-is-react)
+- [1. What is React ?](#1-what-is-react-)
   - [Exercises](#exercises)
-- [2. Why React ?](#2-why-react)
+- [2. Why React ?](#2-why-react-)
   - [Exercises: React](#exercises-react)
 - [3. JSX](#3-jsx)
   - [Exercises](#exercises-1)
@@ -34,9 +37,7 @@
 - [State](#state)
 - [Controlled input](#controlled-input)
 - [Forms](#forms)
-- [Class Component and Functional Component](#class-component-and-functional-component)
 - [Container and Presentation component](#container-and-presentation-component)
-- [React Form](#react-form)
 - [Controlled and uncontrolled inputs](#controlled-and-uncontrolled-inputs)
 - [Conditional Rendering](#conditional-rendering)
   - [Using if condition](#using-if-condition)
@@ -3345,13 +3346,8 @@ class App extends React.Component {
 }
 ```
 
-
-
-## Class Component and Functional Component
-
 ## Container and Presentation component
 
-## React Form
 
 ## Controlled and uncontrolled inputs
 
